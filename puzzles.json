@@ -1,0 +1,479 @@
+{
+  "quotes": [
+    {
+      "date": "2026-07-16",
+      "tag": "🎪 Parookaville",
+      "text": "Ich tanze hier auf dem Festival und du bist noch in Köln — wir sind gleichzeitig nah und fern. Tag 1 von 22. Los geht's."
+    },
+    {
+      "date": "2026-07-17",
+      "tag": "🎵 Festival",
+      "text": "Irgendwo zwischen Bühne und Lagerfeuer denke ich kurz an dich. Genieß noch Köln — bald bist du auf Elba."
+    },
+    {
+      "date": "2026-07-18",
+      "tag": "🎪 Parookaville",
+      "text": "Heute ist dein letzter voller Tag in Kölle. Morgen brichst du auf — und dann fängt der echte Abstand an."
+    },
+    {
+      "date": "2026-07-19",
+      "tag": "🚗 Aufbruch",
+      "text": "Heute fährst du Richtung Elba. Gute Reise, Datzi — ich hoffe, die Sonne empfängt dich schon am ersten Tag so, wie sie's sollte."
+    },
+    {
+      "date": "2026-07-20",
+      "tag": "🏝️ Elba",
+      "text": "Du bist jetzt auf dem Weg nach Elba. Ich bin gerade noch auf dem Weg nach Hause von Parookaville. Komisch, dass ich nicht zu dir komme."
+    },
+    {
+      "date": "2026-07-21",
+      "tag": "♊ Zwillinge",
+      "text": "Zwei Zwillinge — einer in Köln, einer auf Elba. Das Universum findet das offenbar in Ordnung. Ich noch nicht ganz."
+    },
+    {
+      "date": "2026-07-22",
+      "tag": "🌍 Entfernung",
+      "text": "Jeder Tag bringt das Wiedersehen einen Schritt näher. Das ist eigentlich kein schlechtes Gefühl."
+    },
+    {
+      "date": "2026-07-23",
+      "tag": "🛶 Lahn",
+      "text": "Ich paddel heute mit der Arbeit auf der Lahn. Du liegst vermutlich am Strand. Ehrlich gesagt: ich bin ein bisschen neidisch auf deinen Teil des Tages."
+    },
+    {
+      "date": "2026-07-24",
+      "tag": "🎓 Präsentation",
+      "text": "Heute halte ich meine letzte Präsentation des Semesters. Irgendwo in meinem Kopf bist du mein stiller Applaus. Das mag ich und schätze ich sehr."
+    },
+    {
+      "date": "2026-07-25",
+      "tag": "💫 Erleichterung",
+      "text": "Präsentation rum, Semester durch — jetzt zähle ich nur noch Tage bis zum Wiedersehen. Das ist die angenehmste Art zu rechnen."
+    },
+    {
+      "date": "2026-07-26",
+      "tag": "♊ Zwillinge",
+      "text": "Das Schöne an Zwillingen: Sie verstehen sich, ohne viele Worte zu brauchen. Wir sind so ein Paar."
+    },
+    {
+      "date": "2026-07-27",
+      "tag": "💼 Arbeitswoche",
+      "text": "Die vorletzte Arbeitswoche beginnt für mich. Ich denke an dich und freue mich tierisch auf unseren Urlaub!"
+    },
+    {
+      "date": "2026-07-28",
+      "tag": "🐣 Kokaa",
+      "text": "Koooookaaaaaa 🐣 uiiii, wer ist denn da mit in deinen Urlaub gefahren?!"
+    },
+    {
+      "date": "2026-07-29",
+      "tag": "☀️ Elba",
+      "text": "Warme Abende, frische Luft, Meeresrauschen — genieß jeden Moment davon. Du hast ihn dir verdient."
+    },
+    {
+      "date": "2026-07-30",
+      "tag": "💫 Vorfreude",
+      "text": "Noch ein paar Tage — und dann gibt es das Wiedersehen. Darauf freue ich mich sooooo sehr 🥰"
+    },
+    {
+      "date": "2026-07-31",
+      "tag": "🍻 Jungstruppe",
+      "text": "Ich bin heute beim Sommerfest mit der Jungstruppe. Was ich heimlich feiere? Dass du bald zurückkommst."
+    },
+    {
+      "date": "2026-08-01",
+      "tag": "🤕 Kopfschmerzen",
+      "text": "Der erste August beginnt ein bisschen laut im Kopf. Der Gedanke an dich ist zum Glück das Ruhigste darin."
+    },
+    {
+      "date": "2026-08-02",
+      "tag": "🌍 Entfernung",
+      "text": "Die letzten paar Kilometer Entfernung sind immer die, die man am deutlichsten spürt. Aber auch die kürzesten."
+    },
+    {
+      "date": "2026-08-03",
+      "tag": "🎂 Oma wird 86",
+      "text": "Meine Oma wird heute 86. Bald können wir darauf anstoßen."
+    },
+    {
+      "date": "2026-08-04",
+      "tag": "💫 Countdown",
+      "text": "Noch drei Tage! Das ist ganz schon wenig 😍"
+    },
+    {
+      "date": "2026-08-05",
+      "tag": "♊ Zwillinge",
+      "text": "Zwei Zwillinge, bald wieder am selben Ort. Das Universum ordnet sich gerade neu."
+    },
+    {
+      "date": "2026-08-06",
+      "tag": "🥰 Morgen",
+      "text": "Morgen fährst du weiter Richtung Bad Schönborn. Auf dieses 'Morgen' habe ich 22 Tage gewartet."
+    },
+    {
+      "date": "2026-08-07",
+      "tag": "🎉 Wiedersehen",
+      "text": "Wuhuuuuuu, heute sehen wir uns endlich wieder!"
+    }
+  ],
+
+  "wordle": [
+    {
+      "id": "w000",
+      "title": "Wordle #0",
+      "date": "2026-07-15",
+      "word": "KOELN",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Hier sind wir noch 😊",
+      "successMessage": "Hier bleiben wir auch 😊"
+    },
+    {
+      "id": "w001",
+      "title": "Wordle #1",
+      "date": "2026-07-16",
+      "word": "SONNE",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Scheint auf Elba besonders schön ☀️",
+      "successMessage": "Die Sonne scheint — so wie du strahlst, wenn du lachst 🌞"
+    },
+    {
+      "id": "w002",
+      "title": "Wordle #2",
+      "date": "2026-07-17",
+      "word": "KUHLE",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Gibt es in deinem Bett.",
+      "successMessage": "Das Schönste an einer Kuhle im Bett: Man fühlt sich immer aufgehoben 🛏️"
+    },
+    {
+      "id": "w003",
+      "title": "Wordle #3",
+      "date": "2026-07-18",
+      "word": "STRAND",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Sand, Meer, Liegestuhl",
+      "successMessage": "Sand zwischen den Zehen, Meer in Sichtweite — klingt nach deiner aktuellen Situation 🏖️"
+    },
+    {
+      "id": "w004",
+      "title": "Wordle #4",
+      "date": "2026-07-19",
+      "word": "LIEBE",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Das, was zwischen zwei Menschen wächst",
+      "successMessage": "Das einfachste und schwerste Wort zugleich. Du weißt, was gemeint ist 🥰"
+    },
+    {
+      "id": "w005",
+      "title": "Wordle #5",
+      "date": "2026-07-20",
+      "word": "REISE",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Was du gerade machst — das große Abenteuer",
+      "successMessage": "Jede Reise endet irgendwann. Diese hier am 7. August — und dann gibt es das Wiedersehen 🛫"
+    },
+    {
+      "id": "w006",
+      "title": "Wordle #6",
+      "date": "2026-07-21",
+      "word": "SOMMER",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Die schönste Jahreszeit",
+      "successMessage": "Der schönste Teil des Jahres — bald haben wir unseren 🌻"
+    },
+    {
+      "id": "w007",
+      "title": "Wordle #7",
+      "date": "2026-07-22",
+      "word": "INSEL",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Elba ist genau das",
+      "successMessage": "Eine Insel mitten im Meer — und du mittendrin. Klingt wie ein Traum 🏝️"
+    },
+    {
+      "id": "w008",
+      "title": "Wordle #8",
+      "date": "2026-07-23",
+      "word": "TRAUM",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Nachts, wenn man schläft — oder tagsüber, wenn man an jemanden denkt",
+      "successMessage": "Manchmal passiert der schönste Traum im Wachzustand. Du bist so einer 💭"
+    },
+    {
+      "id": "w009",
+      "title": "Wordle #9",
+      "date": "2026-07-24",
+      "word": "PALME",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Steht am Strand und wedelt in der Brise",
+      "successMessage": "Palmen, Sonne, Meer — du hast gerade alles, was ein gutes Leben braucht 🌴"
+    },
+    {
+      "id": "w010",
+      "title": "Wordle #10",
+      "date": "2026-07-25",
+      "word": "BRAUN",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Elba und Sonne werden ihre Spuren hinterlassen",
+      "successMessage": "Du wirst wunderschön braun zurückkommen. David ist jetzt schon neidisch 😄"
+    },
+    {
+      "id": "w011",
+      "title": "Wordle #11",
+      "date": "2026-07-26",
+      "word": "TAUBE",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Gssschhht",
+      "successMessage": "Sogar die freuen sich auf dich 🕊️"
+    },
+    {
+      "id": "w012",
+      "title": "Wordle #12",
+      "date": "2026-07-27",
+      "word": "DATZI",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Der Name einer ganz besonderen Person",
+      "successMessage": "Das bist du! Und du bist wundervoll — falls das noch nicht klar war 🥰"
+    },
+    {
+      "id": "w013",
+      "title": "Wordle #13",
+      "date": "2026-07-28",
+      "word": "DAVID",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Der Name des Menschen, der dir dieses gebaut hat",
+      "successMessage": "Das ist dein Knuffipupsi 💕"
+    },
+    {
+      "id": "w014",
+      "title": "Wordle #14",
+      "date": "2026-07-29",
+      "word": "SCHLAF",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Das, was du besonders gut und lange kannst 😴",
+      "successMessage": "Schlaf gut, Datzi — jemand in Köln würde dich gern dabei beobachten 😴"
+    },
+    {
+      "id": "w015",
+      "title": "Wordle #15",
+      "date": "2026-07-30",
+      "word": "CREME",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Damit die Haut nicht leidet ☀️",
+      "successMessage": "Bitte eincremen! David möchte dich nicht als Hummer wiedersehen 🦞"
+    },
+    {
+      "id": "w016",
+      "title": "Wordle #16",
+      "date": "2026-07-31",
+      "word": "FEIER",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Was man bei Hochzeiten, Geburtstagen — und Wiedersehen — macht",
+      "successMessage": "Bald feiern wir auch — erst Hochzeit, dann einfach uns 🥂"
+    },
+    {
+      "id": "w017",
+      "title": "Wordle #17",
+      "date": "2026-08-01",
+      "word": "PUPSI",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Auch das kommt mal vor 💨",
+      "successMessage": "Was für ein Wort. Was für ein Mensch. Und David liebt beides 💕"
+    },
+    {
+      "id": "w018",
+      "title": "Wordle #18",
+      "date": "2026-08-02",
+      "word": "JOHANN",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Freut sich auch auf dich — dein Bruder 🤗",
+      "successMessage": "Johann freut sich auf dich. David auch. Alle freuen sich auf dich 🥰"
+    },
+    {
+      "id": "w019",
+      "title": "Wordle #19",
+      "date": "2026-08-03",
+      "word": "KUCHEN",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Was es heute zu Omas Geburtstag hoffentlich gibt 🎂",
+      "successMessage": "Auf Omas 86. — und darauf, dass wir das nächste Mal gemeinsam anstoßen 🎂"
+    },
+    {
+      "id": "w020",
+      "title": "Wordle #20",
+      "date": "2026-08-04",
+      "word": "FAHRT",
+      "length": 5,
+      "maxAttempts": 6,
+      "hint": "Was dich am 07.08. zu David bringt 🚗",
+      "successMessage": "Diese Fahrt am 7. August ist die schönste Fahrt des Sommers 🚗💨"
+    },
+    {
+      "id": "w021",
+      "title": "Wordle #21",
+      "date": "2026-08-05",
+      "word": "BATMAN",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Der darf auf keinen Fall fehlen! 🦇",
+      "successMessage": "Natürlich. Er ist immer da, wo er gebraucht wird — wie David 🦇"
+    },
+    {
+      "id": "w022",
+      "title": "Wordle #22",
+      "date": "2026-08-06",
+      "word": "KUESSE",
+      "length": 6,
+      "maxAttempts": 6,
+      "hint": "Die bekommst du ganz viele, wenn wir uns wiedersehen 😘",
+      "successMessage": "Morgen gibt es die wirklich. Alle. Auf einmal 😘"
+    }
+  ],
+
+  "crossword": [
+    {
+      "id": "c000",
+      "title": "Köln-Quiz 🏛️",
+      "date": "2026-07-16",
+      "unlockHour": 0,
+      "grid": [
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","J","E","C","K","#","#","#","#"],
+        ["#","#","#","#","O","#","#","#","#"],
+        ["K","A","R","N","E","V","A","L","#"],
+        ["#","#","H","#","L","#","L","#","#"],
+        ["#","#","E","#","S","#","A","#","#"],
+        ["#","#","I","#","C","#","A","#","#"],
+        ["#","#","N","#","H","#","F","#","#"]
+      ],
+      "clues": {
+        "across": [
+          {"number": 1, "row": 2, "col": 1, "answer": "JECK",     "clue": "Karnevalsnarr — auf Kölsch"},
+          {"number": 3, "row": 4, "col": 0, "answer": "KARNEVAL", "clue": "Die fünfte Jahreszeit — Köln ist ihr Zentrum 🎭"}
+        ],
+        "down": [
+          {"number": 2, "row": 2, "col": 4, "answer": "KOELSCH",  "clue": "Das Lieblingsgetränk der Kölner 🍺"},
+          {"number": 4, "row": 4, "col": 2, "answer": "RHEIN",    "clue": "Der Fluss, an dem Köln liegt"},
+          {"number": 5, "row": 4, "col": 6, "answer": "ALAAF",    "clue": "Kölner Karnevalsruf — dreimal! 🎉"}
+        ]
+      }
+    },
+    {
+      "id": "c001",
+      "title": "Kreuzworträtsel #1",
+      "date": "2026-07-20",
+      "unlockHour": 8,
+      "grid": [
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","R","#","#","#","#","#","#","B"],
+        ["#","E","#","#","I","N","S","E","L"],
+        ["#","I","#","#","#","#","T","#","A"],
+        ["#","S","O","M","M","E","R","#","U"],
+        ["#","E","#","#","E","#","A","#","#"],
+        ["#","#","#","#","E","#","N","#","#"],
+        ["#","#","#","#","R","#","D","#","#"],
+        ["#","#","#","#","#","#","#","#","#"]
+      ],
+      "clues": {
+        "across": [
+          {"number": 3, "row": 2, "col": 4, "answer": "INSEL",  "clue": "Wo Datzi Urlaub macht 🏝️"},
+          {"number": 5, "row": 4, "col": 1, "answer": "SOMMER", "clue": "Die schönste Jahreszeit ☀️"}
+        ],
+        "down": [
+          {"number": 1, "row": 1, "col": 1, "answer": "REISE",  "clue": "Was Datzi gerade macht ✈️"},
+          {"number": 2, "row": 1, "col": 8, "answer": "BLAU",   "clue": "Die Farbe des Meeres und des Himmels"},
+          {"number": 4, "row": 2, "col": 6, "answer": "STRAND", "clue": "Sand, Sonne, Meer — der perfekte Ort"},
+          {"number": 6, "row": 4, "col": 4, "answer": "MEER",   "clue": "Das Salzwasser, das Elba umgibt"}
+        ]
+      }
+    },
+    {
+      "id": "c002",
+      "title": "Kreuzworträtsel #2",
+      "date": "2026-07-27",
+      "unlockHour": 8,
+      "grid": [
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","H","#","#","#","#"],
+        ["#","#","#","#","E","#","#","#","#"],
+        ["#","L","#","T","R","A","U","M","#"],
+        ["#","I","#","#","Z","#","#","#","#"],
+        ["F","E","R","N","E","#","#","#","#"],
+        ["#","B","#","#","N","A","C","H","T"],
+        ["#","E","#","#","#","#","#","#","#"],
+        ["#","#","#","#","#","#","#","#","#"]
+      ],
+      "clues": {
+        "across": [
+          {"number": 3, "row": 3, "col": 3, "answer": "TRAUM", "clue": "Was man nachts erlebt — oder tagsüber, wenn man an jemanden denkt"},
+          {"number": 4, "row": 5, "col": 0, "answer": "FERNE", "clue": "Dort, wo Datzi gerade ist"},
+          {"number": 5, "row": 6, "col": 4, "answer": "NACHT", "clue": "Wenn die Sterne leuchten und man an jemanden denkt"}
+        ],
+        "down": [
+          {"number": 1, "row": 1, "col": 4, "answer": "HERZEN", "clue": "Was zwischen zwei Menschen schlägt — im Plural"},
+          {"number": 2, "row": 3, "col": 1, "answer": "LIEBE",  "clue": "Das stärkste Gefühl der Welt"}
+        ]
+      }
+    },
+    {
+      "id": "c003",
+      "title": "Kreuzworträtsel #3",
+      "date": "2026-08-03",
+      "unlockHour": 8,
+      "grid": [
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","#","F","#","#","#"],
+        ["#","#","#","#","#","R","#","#","#"],
+        ["#","B","L","U","M","E","N","#","#"],
+        ["#","R","#","#","#","U","#","#","#"],
+        ["T","A","N","Z","#","D","#","#","#"],
+        ["#","U","#","#","F","E","I","E","R"],
+        ["#","T","#","#","#","#","#","#","#"]
+      ],
+      "clues": {
+        "across": [
+          {"number": 2, "row": 4, "col": 1, "answer": "BLUMEN", "clue": "Was bei einer Hochzeit nie fehlen darf 💐"},
+          {"number": 3, "row": 6, "col": 0, "answer": "TANZ",   "clue": "Was man auf einer Hochzeit macht 💃"},
+          {"number": 4, "row": 7, "col": 4, "answer": "FEIER",  "clue": "Erst die Trauung, dann das große ___"}
+        ],
+        "down": [
+          {"number": 1, "row": 2, "col": 5, "answer": "FREUDE", "clue": "Das Gefühl, wenn man jemanden endlich wiedersieht"},
+          {"number": 2, "row": 4, "col": 1, "answer": "BRAUT",  "clue": "Die Frau im weißen Kleid 👰"}
+        ]
+      }
+    }
+  ],
+
+  "photos": [
+    {
+      "src": "images/foto1.jpg",
+      "caption": "Hier fehlst du mir schon! 💕"
+    },
+    {
+      "src": "images/foto2.jpg",
+      "caption": "Noch X Tage — dann bist du wieder hier 🥰"
+    }
+  ]
+}

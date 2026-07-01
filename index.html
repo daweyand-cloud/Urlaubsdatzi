@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Datzi's Rätselspaß">
+  <meta name="theme-color" content="#1a1a2e">
+  <link rel="manifest" href="manifest.json">
+  <title>Datzi's Rätselspaß 🧩🥰</title>
+  <style>
+    :root {
+      --bg:        #1a1a2e;
+      --surface:   #16213e;
+      --card:      #0f3460;
+      --accent:    #e94560;
+      --accent2:   #f5a623;
+      --green:     #5cb85c;
+      --yellow:    #f0ad4e;
+      --gray:      #4a4a6a;
+      --text:      #eaeaea;
+      --subtext:   #9999bb;
+      --radius:    14px;
+      --cell:      44px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      max-width: 375px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    /* ───── HEADER ───── */
+    header {
+      background: var(--surface);
+      padding: 14px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 0 6px 0 0;
+      display: none;
+    }
+    header h1 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    /* ───── SCREEN SYSTEM ───── */
+    .screen { display: none; padding: 16px; }
+    .screen.active { display: block; }
+
+    /* ───── HOME ───── */
+    .greeting {
+      text-align: center;
+      padding: 24px 0 8px;
+    }
+    .greeting .heart { font-size: 42px; }
+    .greeting h2 { font-size: 24px; font-weight: 700; margin-top: 10px; }
+
+    /* Daily quote */
+    .daily-quote {
+      margin: 14px 4px 24px;
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      color: var(--subtext);
+      line-height: 1.55;
+      font-style: italic;
+    }
+    .daily-quote .quote-tag {
+      display: block;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    /* ───── HOME TILES ───── */
+    .home-tiles {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .home-tile {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 20px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid transparent;
+      transition: border-color 0.15s, transform 0.1s;
+      position: relative;
+      overflow: hidden;
+      -webkit-user-select: none;
+    }
+    .home-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .home-tile.tile-wordle::before  { background: linear-gradient(135deg, rgba(92,184,92,0.15), transparent); }
+    .home-tile.tile-cross::before   { background: linear-gradient(135deg, rgba(245,166,35,0.15), transparent); }
+    .home-tile.tile-photo::before   { background: linear-gradient(135deg, rgba(233,69,96,0.2), transparent); }
+    .home-tile:active { transform: scale(0.97); border-color: rgba(255,255,255,0.15); }
+    .home-tile:active::before { opacity: 1; }
+
+    .tile-icon {
+      font-size: 36px;
+      flex-shrink: 0;
+      width: 52px;
+      text-align: center;
+    }
+    .tile-body { flex: 1; }
+    .tile-body .tile-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .tile-body .tile-desc {
+      font-size: 12px;
+      color: var(--subtext);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .tile-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .tile-badge.done { background: var(--green); }
+    .tile-arrow { color: var(--subtext); font-size: 20px; }
+
+    /* ───── PUZZLE LIST (sub-screens) ───── */
+    .puzzle-list { display: flex; flex-direction: column; gap: 10px; }
+    .puzzle-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid transparent;
+      transition: border-color 0.15s, transform 0.1s;
+      -webkit-user-select: none;
+    }
+    .puzzle-card:active { transform: scale(0.98); border-color: var(--accent); }
+    .puzzle-icon { font-size: 28px; flex-shrink: 0; width: 48px; text-align: center; }
+    .puzzle-info { flex: 1; min-width: 0; }
+    .puzzle-info .name { font-weight: 600; font-size: 15px; }
+    .puzzle-info .meta { font-size: 12px; color: var(--subtext); margin-top: 3px; }
+    .puzzle-info .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-top: 5px;
+    }
+    .puzzle-info .badge.done { background: var(--green); }
+    .puzzle-arrow { color: var(--subtext); font-size: 18px; }
+    .empty-state {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--subtext);
+      font-size: 14px;
+    }
+
+    /* ───── PHOTO SCREEN ───── */
+    #photo-screen { text-align: center; padding-bottom: 30px; }
+    .photo-intro {
+      color: var(--subtext);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .photo-frame {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .photo-frame img {
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+      object-fit: cover;
+      max-height: 420px;
+    }
+    .photo-placeholder {
+      padding: 40px 20px;
+      color: var(--subtext);
+    }
+    .photo-placeholder .big { font-size: 48px; margin-bottom: 12px; }
+    .photo-placeholder p { font-size: 13px; line-height: 1.5; }
+    .photo-day-label {
+      font-size: 12px;
+      color: var(--subtext);
+      margin-bottom: 12px;
+    }
+    .photo-day-label span {
+      color: var(--accent2);
+      font-weight: 700;
+    }
+    .photo-msg {
+      background: rgba(233,69,96,0.1);
+      border: 1px solid rgba(233,69,96,0.25);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    /* ───── WORDLE ───── */
+    #wordle-screen { padding-bottom: 20px; }
+    .wordle-hint {
+      text-align: center;
+      background: rgba(249,165,35,0.12);
+      border: 1px solid rgba(249,165,35,0.3);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--accent2);
+      margin-bottom: 18px;
+    }
+    .wordle-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 18px;
+    }
+    .wordle-row { display: flex; gap: 5px; }
+    .wordle-cell {
+      width: var(--cell);
+      height: var(--cell);
+      border: 2px solid var(--gray);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background 0.25s, border-color 0.25s;
+      color: white;
+    }
+    .wordle-cell.filled   { border-color: var(--subtext); }
+    .wordle-cell.correct  { background: var(--green);  border-color: var(--green); }
+    .wordle-cell.present  { background: var(--yellow); border-color: var(--yellow); }
+    .wordle-cell.absent   { background: var(--gray);   border-color: var(--gray); }
+    .wordle-cell.active   { border-color: white; }
+
+    .wordle-keyboard { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .kb-row { display: flex; justify-content: center; gap: 4px; }
+    .kb-key {
+      height: 46px;
+      min-width: 30px;
+      padding: 0 6px;
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      flex: 1;
+      max-width: 34px;
+      transition: background 0.15s;
+    }
+    .kb-key.wide    { max-width: 50px; font-size: 11px; }
+    .kb-key.correct { background: var(--green); }
+    .kb-key.present { background: var(--yellow); color: #111; }
+    .kb-key.absent  { background: #2a2a4a; color: var(--subtext); }
+    .kb-key:active  { opacity: 0.7; }
+
+    .wordle-status {
+      text-align: center;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+      min-height: 44px;
+    }
+    .wordle-status.win  { color: var(--green); }
+    .wordle-status.lose { color: var(--accent); }
+
+    /* ───── COUNTDOWN ───── */
+    .countdown-box {
+      background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(233,69,96,0.08));
+      border: 1px solid rgba(245,166,35,0.3);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .countdown-box .cd-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 10px;
+    }
+    .countdown-box .cd-time {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-box .cd-sub {
+      font-size: 12px;
+      color: var(--subtext);
+      margin-top: 8px;
+    }
+
+    /* ───── CROSSWORD ───── */
+    #crossword-screen { padding-bottom: 24px; }
+
+    .cw-zoom-controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .cw-zoom-btn {
+      background: var(--card);
+      border: 1px solid var(--gray);
+      color: var(--text);
+      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cw-zoom-label {
+      font-size: 11px;
+      color: var(--subtext);
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .cw-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -16px;
+      padding: 0 16px;
+      margin-bottom: 16px;
+    }
+    .cw-grid-table { border-collapse: collapse; margin: 0 auto; }
+    .cw-cell {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.15);
+      position: relative;
+      vertical-align: top;
+    }
+    .cw-cell.black { background: #111; border-color: #111; }
+    .cw-cell.selected { background: rgba(233,69,96,0.35) !important; }
+    .cw-cell.highlighted { background: rgba(233,69,96,0.12); }
+    .cw-cell input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      caret-color: transparent;
+      cursor: pointer;
+    }
+    .cw-cell .num {
+      position: absolute;
+      top: 1px;
+      left: 2px;
+      font-size: 8px;
+      color: var(--subtext);
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .cw-cell.correct-cell input { color: var(--green); }
+    .cw-cell.wrong-cell input   { color: var(--accent); }
+    .cw-cell.flash-green { background: rgba(92,184,92,0.55) !important; transition: background 0.15s; }
+    .cw-cell.flash-red   { background: rgba(233,69,96,0.55) !important; transition: background 0.15s; }
+    .cw-cell.auto-correct input { color: var(--green); font-weight: 700; }
+
+    .cw-clues { margin-top: 4px; }
+    .cw-clue-section { margin-bottom: 14px; }
+    .cw-clue-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cw-clue-item {
+      display: flex;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.12s;
+      margin-bottom: 4px;
+    }
+    .cw-clue-item:active { background: rgba(255,255,255,0.05); }
+    .cw-clue-item.active-clue { background: rgba(233,69,96,0.12); }
+    .cw-clue-num { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 18px; }
+    .cw-clue-text { font-size: 13px; color: var(--text); line-height: 1.4; }
+    .cw-clue-item.solved .cw-clue-text { color: var(--green); text-decoration: line-through; }
+
+    .cw-check-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+    .cw-check-btn:active { opacity: 0.85; }
+    .cw-reveal-btn {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      color: var(--subtext);
+      border: 1px solid var(--gray);
+      border-radius: var(--radius);
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* ───── POPUP ───── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.show { display: flex; }
+    .popup {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 28px 24px;
+      max-width: 300px;
+      width: 90%;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .popup .emoji { font-size: 48px; margin-bottom: 12px; }
+    .popup h3 { font-size: 20px; margin-bottom: 8px; }
+    .popup p { color: var(--subtext); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+    .popup button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="back-btn" id="backBtn" onclick="goHome()">←</button>
+  <div>
+    <h1 id="headerTitle">Datzi's Rätselspaß 🧩🥰</h1>
+  </div>
+</header>
+
+<!-- HOME -->
+<div id="home-screen" class="screen active">
+  <div class="greeting">
+    <div class="heart">💌</div>
+    <h2>Hallo Datzi!</h2>
+  </div>
+  <div class="daily-quote" id="daily-quote">
+    <span class="quote-tag" id="quote-tag"></span>
+    <span id="quote-text"></span>
+  </div>
+
+  <div class="home-tiles">
+    <div class="home-tile tile-wordle" onclick="showWordleList()">
+      <div class="tile-icon">🔤</div>
+      <div class="tile-body">
+        <div class="tile-name">Wordle</div>
+        <div class="tile-desc">Rate das Wort Buchstabe für Buchstabe</div>
+        <span class="tile-badge" id="wordle-badge">Spielen →</span>
+      </div>
+    </div>
+
+    <div class="home-tile tile-cross" onclick="showCrosswordList()">
+      <div class="tile-icon">🔲</div>
+      <div class="tile-body">
+        <div class="tile-name">Kreuzworträtsel</div>
+        <div class="tile-desc">Waagerecht und senkrecht zum Ziel</div>
+        <span class="tile-badge" id="cross-badge">Spielen →</span>
+      </div>
+    </div>
+
+    <div class="home-tile tile-photo" onclick="showPhoto()">
+      <div class="tile-icon">📸</div>
+      <div class="tile-body">
+        <div class="tile-name">Überraschung</div>
+        <div class="tile-desc"></div>
+        <span class="tile-badge" style="background: var(--accent);">Anschauen ♥</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORDLE LIST -->
+<div id="wordle-list-screen" class="screen">
+  <div id="wordle-list" class="puzzle-list"></div>
+</div>
+
+<!-- CROSSWORD LIST -->
+<div id="crossword-list-screen" class="screen">
+  <div id="crossword-list" class="puzzle-list"></div>
+</div>
+
+<!-- PHOTO -->
+<div id="photo-screen" class="screen">
+  <p class="photo-intro">Zufallsfoto zweier Süßmäuse ❤️</p>
+  <div class="photo-frame" id="photo-frame">
+    <div class="photo-placeholder" id="photo-placeholder">
+      <div class="big">🌅</div>
+      <p>Noch keine Bilder hochgeladen.<br>David kümmert sich darum!</p>
+    </div>
+  </div>
+  <div class="photo-msg" id="photo-msg" style="display:none;"></div>
+</div>
+
+<!-- WORDLE GAME -->
+<div id="wordle-screen" class="screen">
+  <div id="wordle-hint-box" class="wordle-hint" style="display:none;"></div>
+  <div id="wordle-grid" class="wordle-grid"></div>
+  <div id="wordle-status" class="wordle-status"></div>
+  <div id="wordle-keyboard" class="wordle-keyboard"></div>
+</div>
+
+<!-- CROSSWORD GAME -->
+<div id="crossword-screen" class="screen">
+  <div class="cw-zoom-controls">
+    <button class="cw-zoom-btn" onclick="cwZoom(-1)">−</button>
+    <span class="cw-zoom-label" id="cw-zoom-label">Normal</span>
+    <button class="cw-zoom-btn" onclick="cwZoom(1)">+</button>
+  </div>
+  <div class="cw-wrapper">
+    <table id="cw-grid-table" class="cw-grid-table"></table>
+  </div>
+  <div class="cw-clues" id="cw-clues"></div>
+  <button class="cw-check-btn" onclick="checkCrossword()">✅ Lösung prüfen</button>
+  <button class="cw-reveal-btn" onclick="revealCrossword()">💡 Lösung anzeigen</button>
+</div>
+
+<!-- Popup -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="emoji" id="popupEmoji"></div>
+    <h3 id="popupTitle"></h3>
+    <p id="popupMsg"></p>
+    <button id="popupBtn" onclick="closePopup()">OK 🎉</button>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────
+// DAILY QUOTES — kommen aus puzzles.json
+// ─────────────────────────────────────────
+function getDailyQuote() {
+  const today = new Date();
+  const dateStr = today.toISOString().slice(0, 10); // "2026-07-16"
+  const quotes = puzzles.quotes || [];
+  return quotes.find(q => q.date === dateStr)
+    || { tag: "💫 Heute", text: "Heute ist ein guter Tag. Einfach weil du da bist. 🥰" };
+}
+
+function renderDailyQuote() {
+  const q = getDailyQuote();
+  document.getElementById('quote-tag').textContent = q.tag;
+  document.getElementById('quote-text').textContent = q.text;
+}
+
+// ─────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────
+let puzzles = { wordle: [], crossword: [], photos: [] };
+let progress = JSON.parse(localStorage.getItem('datzis-progress') || '{}');
+
+// Wordle state
+let wState = null;
+
+// Crossword state
+let cwData = null;
+let cwSelected = null;
+let cwDirection = 'across';
+let cwUserGrid = [];
+let cwSolvedWords = new Set(); // "number+dir" z.B. "3A" oder "1D"
+
+// ─────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────
+async function init() {
+  try {
+    const resp = await fetch('./puzzles.json?t=' + Date.now());
+    puzzles = await resp.json();
+    if (!puzzles.photos) puzzles.photos = [];
+  } catch(e) {
+    console.warn('puzzles.json nicht geladen:', e);
+  }
+  renderDailyQuote();
+  updateHomeBadges();
+}
+
+function saveProgress() {
+  localStorage.setItem('datzis-progress', JSON.stringify(progress));
+}
+
+// ─────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────
+function showScreen(id, title) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('headerTitle').textContent = title || 'Datzi\'s Rätselspaß 🧩🥰';
+  document.getElementById('backBtn').style.display = id === 'home-screen' ? 'none' : 'block';
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  updateHomeBadges();
+  showScreen('home-screen');
+}
+
+// ─────────────────────────────────────────
+// HOME BADGES
+// ─────────────────────────────────────────
+function updateHomeBadges() {
+  // Wordle badge
+  const wSolved = puzzles.wordle.filter(p => progress[p.id]?.won).length;
+  const wTotal  = puzzles.wordle.length;
+  const wBadge  = document.getElementById('wordle-badge');
+  if (wTotal === 0) { wBadge.textContent = 'Bald verfügbar'; wBadge.className = 'tile-badge'; }
+  else if (wSolved === wTotal) { wBadge.textContent = '✓ Alle gelöst'; wBadge.className = 'tile-badge done'; }
+  else { wBadge.textContent = `${wSolved}/${wTotal} gelöst`; wBadge.className = 'tile-badge'; }
+
+  // Crossword badge
+  const cSolved = puzzles.crossword.filter(p => progress[p.id]?.solved).length;
+  const cTotal  = puzzles.crossword.length;
+  const cBadge  = document.getElementById('cross-badge');
+  if (cTotal === 0) { cBadge.textContent = 'Bald verfügbar'; cBadge.className = 'tile-badge'; }
+  else if (cSolved === cTotal) { cBadge.textContent = '✓ Alle gelöst'; cBadge.className = 'tile-badge done'; }
+  else { cBadge.textContent = `${cSolved}/${cTotal} gelöst`; cBadge.className = 'tile-badge'; }
+}
+
+// ─────────────────────────────────────────
+// WORDLE LIST
+// ─────────────────────────────────────────
+function showWordleList() {
+  const el = document.getElementById('wordle-list');
+  if (!puzzles.wordle.length) {
+    el.innerHTML = '<div class="empty-state">Noch keine Wordles — David baut bald welche! 🕐</div>';
+  } else {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    el.innerHTML = puzzles.wordle.map(p => {
+      const unlocked = !p.date || p.date <= todayStr;
+      const done = progress[p.id]?.won;
+      const dots = '⬜'.repeat(p.length); // show word length visually
+      if (!unlocked) {
+        // locked — show teaser
+        const d = p.date ? p.date.slice(8,10) + '.' + p.date.slice(5,7) + '.' : '';
+        return `<div class="puzzle-card" style="opacity:0.45; cursor:default;">
+          <div class="puzzle-icon">🔒</div>
+          <div class="puzzle-info">
+            <div class="name">${p.title}</div>
+            <div class="meta">${dots} · ${p.length} Buchstaben</div>
+            <span class="badge" style="background:var(--gray);">Ab ${d} verfügbar</span>
+          </div>
+        </div>`;
+      }
+      return `<div class="puzzle-card" onclick="startWordle('${p.id}')">
+        <div class="puzzle-icon">🔤</div>
+        <div class="puzzle-info">
+          <div class="name">${p.title}</div>
+          <div class="meta">${dots} · ${p.length} Buchstaben</div>
+          ${done ? '<span class="badge done">✓ Gelöst</span>' : '<span class="badge">Neu!</span>'}
+        </div>
+        <div class="puzzle-arrow">›</div>
+      </div>`;
+    }).join('');
+  }
+  showScreen('wordle-list-screen', '🔤 Wordle');
+}
+
+// ─────────────────────────────────────────
+// CROSSWORD UNLOCK HELPER
+// ─────────────────────────────────────────
+function crosswordUnlockTime(p) {
+  if (!p.date) return null;
+  const hour = p.unlockHour !== undefined ? p.unlockHour : 0;
+  return new Date(p.date + 'T' + String(hour).padStart(2,'0') + ':00:00');
+}
+
+function isCrosswordUnlocked(p) {
+  const t = crosswordUnlockTime(p);
+  return !t || new Date() >= t;
+}
+
+// ─────────────────────────────────────────
+// COUNTDOWN
+// ─────────────────────────────────────────
+let _countdownInterval = null;
+
+function startCountdown(targetDate, containerId) {
+  if (_countdownInterval) clearInterval(_countdownInterval);
+  function tick() {
+    const diff = targetDate - new Date();
+    if (diff <= 0) {
+      clearInterval(_countdownInterval);
+      showCrosswordList(); // refresh list
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const el = document.getElementById(containerId);
+    if (el) el.textContent =
+      (d > 0 ? d + 'd ' : '') +
+      String(h).padStart(2,'0') + ':' +
+      String(m).padStart(2,'0') + ':' +
+      String(s).padStart(2,'0');
+  }
+  tick();
+  _countdownInterval = setInterval(tick, 1000);
+}
+
+// ─────────────────────────────────────────
+// CROSSWORD LIST
+// ─────────────────────────────────────────
+// Hartcodierter Fallback: erstes Kreuzworträtsel 16.07. um 00:00
+const FIRST_CROSSWORD_UNLOCK = new Date('2026-07-16T00:00:00');
+
+function showCrosswordList() {
+  const el = document.getElementById('crossword-list');
+
+  // Wenn puzzles.json noch nicht geladen: Countdown trotzdem zeigen
+  if (!puzzles.crossword.length) {
+    const now = new Date();
+    if (now < FIRST_CROSSWORD_UNLOCK) {
+      const dateLabel = FIRST_CROSSWORD_UNLOCK.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
+      el.innerHTML = `<div class="countdown-box">
+        <div class="cd-label">🔲 Erstes Kreuzworträtsel in</div>
+        <div class="cd-time" id="cd-display">--:--:--</div>
+        <div class="cd-sub">${dateLabel} um 08:00 Uhr</div>
+      </div>`;
+      showScreen('crossword-list-screen', '🔲 Kreuzworträtsel');
+      startCountdown(FIRST_CROSSWORD_UNLOCK, 'cd-display');
+    } else {
+      el.innerHTML = '<div class="empty-state">David lädt bald das nächste Rätsel hoch 🕐</div>';
+      showScreen('crossword-list-screen', '🔲 Kreuzworträtsel');
+    }
+    return;
+  }
+
+  // Find earliest locked puzzle for countdown
+  const firstLocked = puzzles.crossword.find(p => !isCrosswordUnlocked(p));
+  let html = '';
+
+  if (firstLocked) {
+    const t = crosswordUnlockTime(firstLocked);
+    const dateLabel = t.toLocaleDateString('de-DE', { weekday:'long', day:'numeric', month:'long' });
+    const timeLabel = String(t.getHours()).padStart(2,'0') + ':00 Uhr';
+    html += `<div class="countdown-box">
+      <div class="cd-label">🔲 Erstes Kreuzworträtsel in</div>
+      <div class="cd-time" id="cd-display">--:--:--</div>
+      <div class="cd-sub">${dateLabel} um ${timeLabel}</div>
+    </div>`;
+  }
+
+  html += puzzles.crossword.map(p => {
+    const unlocked = isCrosswordUnlocked(p);
+    const done = progress[p.id]?.solved;
+    if (!unlocked) {
+      const t = crosswordUnlockTime(p);
+      const label = t ? t.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'}) + ', ' + String(t.getHours()).padStart(2,'0') + ':00' : '';
+      return `<div class="puzzle-card" style="opacity:0.4;cursor:default;">
+        <div class="puzzle-icon">🔒</div>
+        <div class="puzzle-info">
+          <div class="name">${p.title}</div>
+          <div class="meta">Ab ${label}</div>
+          <span class="badge" style="background:var(--gray);">Noch gesperrt</span>
+        </div>
+      </div>`;
+    }
+    return `<div class="puzzle-card" onclick="startCrossword('${p.id}')">
+      <div class="puzzle-icon">🔲</div>
+      <div class="puzzle-info">
+        <div class="name">${p.title}</div>
+        <div class="meta">${p.date ? new Date(p.date).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'}) : ''}</div>
+        ${done ? '<span class="badge done">✓ Gelöst</span>' : '<span class="badge">Neu!</span>'}
+      </div>
+      <div class="puzzle-arrow">›</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = html;
+  showScreen('crossword-list-screen', '🔲 Kreuzworträtsel');
+
+  // Start countdown if needed
+  if (firstLocked) {
+    const t = crosswordUnlockTime(firstLocked);
+    startCountdown(t, 'cd-display');
+  }
+}
+
+// ─────────────────────────────────────────
+// PHOTO
+// ─────────────────────────────────────────
+function showPhoto() {
+  showScreen('photo-screen', '📸 Überraschung');
+
+  const photos = puzzles.photos || [];
+  const frame  = document.getElementById('photo-frame');
+  const placeholder = document.getElementById('photo-placeholder');
+  const msgBox = document.getElementById('photo-msg');
+
+  // Determine day number (days since vacation start or just today's date-based index)
+  const today = new Date();
+  const seed  = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+
+  if (!photos.length) {
+    placeholder.style.display = 'block';
+    msgBox.style.display = 'none';
+    return;
+  }
+
+  placeholder.style.display = 'none';
+
+  // Pick photo: date-seeded so same photo all day, rotates daily
+  const idx = seed % photos.length;
+  const photo = photos[idx];
+
+  // Remove old image if any
+  const oldImg = frame.querySelector('img');
+  if (oldImg) oldImg.remove();
+
+  const img = document.createElement('img');
+  img.src = photo.src;
+  img.alt = photo.caption || 'Bild von David';
+  frame.appendChild(img);
+
+  if (photo.caption) {
+    msgBox.textContent = '💬 ' + photo.caption;
+    msgBox.style.display = 'block';
+  } else {
+    msgBox.style.display = 'none';
+  }
+}
+
+// ─────────────────────────────────────────
+// WORDLE
+// ─────────────────────────────────────────
+const KB_ROWS = [
+  ['Q','W','E','R','T','Z','U','I','O','P'],
+  ['A','S','D','F','G','H','J','K','L'],
+  ['↵','Y','X','C','V','B','N','M','⌫']
+];
+
+function startWordle(id) {
+  const p = puzzles.wordle.find(w => w.id === id);
+  if (!p) return;
+  const saved = progress[id];
+  wState = {
+    id,
+    word: p.word.toUpperCase(),
+    length: p.word.length,
+    maxAttempts: p.maxAttempts || 6,
+    guesses: saved?.guesses || [],
+    currentGuess: '',
+    finished: saved?.solved || false,
+    won: saved?.won || false,
+    successMessage: p.successMessage || 'Richtig! Super Datzi! 🎉',
+  };
+  showScreen('wordle-screen', p.title);
+  const hintBox = document.getElementById('wordle-hint-box');
+  if (p.hint) { hintBox.textContent = '💡 ' + p.hint; }
+  // Tipp nur anzeigen wenn das Wordle bereits gewonnen wurde
+  hintBox.style.display = (wState.won && p.hint) ? 'block' : 'none';
+  renderWordleGrid();
+  renderWordleKeyboard();
+  renderWordleStatus();
+}
+
+function renderWordleGrid() {
+  const grid = document.getElementById('wordle-grid');
+  const len  = wState.length;
+  const cellSize = len <= 5 ? 52 : len <= 6 ? 44 : 38;
+  document.documentElement.style.setProperty('--cell', cellSize + 'px');
+  grid.innerHTML = '';
+  for (let r = 0; r < wState.maxAttempts; r++) {
+    const row = document.createElement('div');
+    row.className = 'wordle-row';
+    row.id = `wr-${r}`;
+    for (let c = 0; c < len; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'wordle-cell';
+      cell.id = `wc-${r}-${c}`;
+      if (r < wState.guesses.length) {
+        const res = scoreGuess(wState.guesses[r], wState.word);
+        cell.textContent = wState.guesses[r][c];
+        cell.classList.add(res[c]);
+      } else if (r === wState.guesses.length && !wState.finished) {
+        cell.textContent = wState.currentGuess[c] || '';
+        if (c < wState.currentGuess.length) cell.classList.add('filled');
+        if (c === wState.currentGuess.length) cell.classList.add('active');
+      }
+      row.appendChild(cell);
+    }
+    grid.appendChild(row);
+  }
+}
+
+function renderWordleKeyboard() {
+  const kb = document.getElementById('wordle-keyboard');
+  kb.innerHTML = '';
+  const ls = getLetterState();
+  KB_ROWS.forEach(keys => {
+    const row = document.createElement('div');
+    row.className = 'kb-row';
+    keys.forEach(k => {
+      const btn = document.createElement('button');
+      btn.className = 'kb-key' + (k === '↵' || k === '⌫' ? ' wide' : '');
+      btn.textContent = k;
+      if (ls[k]) btn.classList.add(ls[k]);
+      btn.addEventListener('click', () => handleWordleKey(k));
+      row.appendChild(btn);
+    });
+    kb.appendChild(row);
+  });
+}
+
+function renderWordleStatus() {
+  const el = document.getElementById('wordle-status');
+  if (wState.won)      { el.textContent = '🎉 Geschafft! Super Datzi!'; el.className = 'wordle-status win'; }
+  else if (wState.finished) { el.textContent = '😅 Das Wort war: ' + wState.word; el.className = 'wordle-status lose'; }
+  else { el.textContent = ''; el.className = 'wordle-status'; }
+}
+
+function getLetterState() {
+  const s = {};
+  wState.guesses.forEach(g => {
+    const res = scoreGuess(g, wState.word);
+    g.split('').forEach((ch, i) => {
+      const prio = { correct: 3, present: 2, absent: 1 };
+      if (!s[ch] || prio[res[i]] > prio[s[ch]]) s[ch] = res[i];
+    });
+  });
+  return s;
+}
+
+function scoreGuess(guess, word) {
+  const result = Array(guess.length).fill('absent');
+  const wa = word.split(''), ga = guess.split('');
+  ga.forEach((ch, i) => { if (ch === wa[i]) { result[i] = 'correct'; wa[i] = null; ga[i] = null; } });
+  ga.forEach((ch, i) => { if (!ch) return; const wi = wa.indexOf(ch); if (wi !== -1) { result[i] = 'present'; wa[wi] = null; } });
+  return result;
+}
+
+function handleWordleKey(key) {
+  if (wState.finished) return;
+  if (key === '⌫') { wState.currentGuess = wState.currentGuess.slice(0, -1); }
+  else if (key === '↵') { submitWordle(); return; }
+  else if (wState.currentGuess.length < wState.length) { wState.currentGuess += key; }
+  renderWordleGrid();
+}
+
+function showWordleHint() {
+  const hintBox = document.getElementById('wordle-hint-box');
+  if (hintBox.textContent) hintBox.style.display = 'block';
+}
+
+function submitWordle() {
+  if (wState.currentGuess.length < wState.length) { shakeRow(wState.guesses.length); return; }
+  wState.guesses.push(wState.currentGuess);
+  const won = wState.currentGuess === wState.word;
+  const finished = won || wState.guesses.length >= wState.maxAttempts;
+  wState.won = won; wState.finished = finished; wState.currentGuess = '';
+
+  if (won) {
+    progress[wState.id] = { solved: true, won: true, guesses: wState.guesses }; saveProgress();
+    renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
+    showWordleHint();
+    setTimeout(() => showPopup('🎉', wState.word + '!', wState.successMessage, 'Ich bin eine Rätselmaus 🥰', showWordleCountdown), 600);
+  } else if (finished) {
+    renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
+    const lostWord = wState.word;
+    setTimeout(() => {
+      showPopup('😅', 'Das Wort war: ' + lostWord, 'Kein Problem! Schau dir den Tipp an und versuch\'s nochmal 💪');
+      // Fortschritt löschen und Grid zurücksetzen
+      delete progress[wState.id]; saveProgress();
+      wState.guesses = []; wState.finished = false; wState.won = false; wState.currentGuess = '';
+      showWordleHint();
+      renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
+    }, 600);
+  } else {
+    renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
+  }
+}
+
+function shakeRow(r) {
+  const row = document.getElementById(`wr-${r}`);
+  if (!row) return;
+  row.style.transform = 'translateX(-6px)';
+  setTimeout(() => row.style.transform = 'translateX(6px)', 80);
+  setTimeout(() => row.style.transform = 'translateX(-4px)', 160);
+  setTimeout(() => row.style.transform = 'translateX(0)', 240);
+}
+
+// ─────────────────────────────────────────
+// CROSSWORD
+// ─────────────────────────────────────────
+function startCrossword(id) {
+  const p = puzzles.crossword.find(c => c.id === id);
+  if (!p) return;
+  cwData = p; cwSelected = null; cwDirection = 'across';
+  cwSolvedWords = new Set();
+  const saved = progress[id]?.userGrid;
+  cwUserGrid = p.grid.map((row, r) => row.map((cell, c) => cell === '#' ? '#' : (saved?.[r]?.[c] || '')));
+  // Bereits korrekte Wörter aus gespeichertem Fortschritt wiederherstellen
+  ['across','down'].forEach(dir => {
+    (p.clues[dir]||[]).forEach(cl => {
+      if (isWordSolvedCl(cl, dir)) cwSolvedWords.add(cl.number + (dir==='across'?'A':'D'));
+    });
+  });
+  showScreen('crossword-screen', p.title);
+  renderCrosswordGrid();
+  renderCrosswordClues();
+}
+
+// ─────────────────────────────────────────
+// CROSSWORD ZOOM
+// ─────────────────────────────────────────
+const CW_ZOOM_SIZES  = [22, 28, 34, 40];
+const CW_ZOOM_LABELS = ['Klein', 'Normal', 'Groß', 'Sehr groß'];
+let cwZoomLevel = 1; // default: Normal
+
+function cwZoom(dir) {
+  cwZoomLevel = Math.max(0, Math.min(CW_ZOOM_SIZES.length - 1, cwZoomLevel + dir));
+  applyCwZoom();
+}
+
+function applyCwZoom() {
+  const size = CW_ZOOM_SIZES[cwZoomLevel];
+  document.querySelectorAll('.cw-cell').forEach(td => {
+    td.style.width  = size + 'px';
+    td.style.height = size + 'px';
+  });
+  document.querySelectorAll('.cw-cell input').forEach(inp => {
+    inp.style.fontSize = Math.max(10, size - 14) + 'px';
+  });
+  document.querySelectorAll('.cw-cell .num').forEach(n => {
+    n.style.fontSize = Math.max(6, size - 22) + 'px';
+  });
+  const lbl = document.getElementById('cw-zoom-label');
+  if (lbl) lbl.textContent = CW_ZOOM_LABELS[cwZoomLevel];
+}
+
+function renderCrosswordGrid() {
+  const table = document.getElementById('cw-grid-table');
+  table.innerHTML = '';
+  cwZoomLevel = 1; // reset to Normal when opening a new puzzle
+  const numMap = buildNumberMap();
+  cwData.grid.forEach((row, r) => {
+    const tr = document.createElement('tr');
+    row.forEach((cell, c) => {
+      const td = document.createElement('td');
+      td.className = 'cw-cell' + (cell === '#' ? ' black' : '');
+      td.dataset.r = r; td.dataset.c = c;
+      if (cell !== '#') {
+        if (numMap[`${r},${c}`]) {
+          const ns = document.createElement('span');
+          ns.className = 'num'; ns.textContent = numMap[`${r},${c}`];
+          td.appendChild(ns);
+        }
+        const inp = document.createElement('input');
+        inp.type = 'text'; inp.maxLength = 1; inp.value = cwUserGrid[r][c];
+        inp.dataset.r = r; inp.dataset.c = c;
+        inp.setAttribute('autocomplete','off'); inp.setAttribute('autocorrect','off'); inp.setAttribute('spellcheck','false');
+        inp.addEventListener('focus', () => selectCell(r, c));
+        inp.addEventListener('input', e => handleCwInput(e, r, c));
+        inp.addEventListener('keydown', e => handleCwKeydown(e, r, c));
+        td.appendChild(inp);
+      }
+      tr.appendChild(td);
+    });
+    table.appendChild(tr);
+  });
+  applyCwHighlight();
+  applyCwZoom();
+}
+
+function buildNumberMap() {
+  const map = {};
+  [...(cwData.clues.across||[]), ...(cwData.clues.down||[])].forEach(cl => { map[`${cl.row},${cl.col}`] = cl.number; });
+  return map;
+}
+
+function selectCell(r, c) {
+  if (cwData.grid[r][c] === '#') return;
+  if (cwSelected && cwSelected.r === r && cwSelected.c === c) {
+    if (getClueAt(r,c,'across') && getClueAt(r,c,'down')) cwDirection = cwDirection === 'across' ? 'down' : 'across';
+  } else {
+    cwSelected = { r, c };
+    if (!getClueAt(r,c,'across') && getClueAt(r,c,'down')) cwDirection = 'down';
+    else if (getClueAt(r,c,'across') && !getClueAt(r,c,'down')) cwDirection = 'across';
+  }
+  cwSelected = { r, c };
+  applyCwHighlight(); renderCrosswordClues();
+}
+
+function getClueAt(r, c, dir) {
+  return (cwData.clues[dir]||[]).find(cl =>
+    dir === 'across' ? cl.row === r && cl.col <= c && cl.col + cl.answer.length > c
+                     : cl.col === c && cl.row <= r && cl.row + cl.answer.length > r
+  );
+}
+
+function applyCwHighlight() {
+  document.querySelectorAll('.cw-cell').forEach(td => td.classList.remove('selected','highlighted'));
+  if (!cwSelected) return;
+  const { r, c } = cwSelected;
+  const cl = getClueAt(r, c, cwDirection);
+  if (cl) {
+    for (let i = 0; i < cl.answer.length; i++) {
+      const td = getCwTd(cwDirection === 'across' ? cl.row : cl.row+i, cwDirection === 'across' ? cl.col+i : cl.col);
+      if (td) td.classList.add('highlighted');
+    }
+  }
+  const selTd = getCwTd(r, c);
+  if (selTd) { selTd.classList.remove('highlighted'); selTd.classList.add('selected'); }
+}
+
+function getCwTd(r, c) { return document.querySelector(`.cw-cell[data-r="${r}"][data-c="${c}"]`); }
+function getCwInput(r, c) { const td = getCwTd(r,c); return td ? td.querySelector('input') : null; }
+
+function handleCwInput(e, r, c) {
+  const raw = e.target.value.toUpperCase().replace(/[^A-Z]/g,'').slice(-1);
+  e.target.value = raw; cwUserGrid[r][c] = raw; saveCwProgress();
+  if (raw) {
+    checkWordCompletion(r, c);
+    moveNext(r, c);
+  }
+}
+
+function handleCwKeydown(e, r, c) {
+  if (e.key === 'Backspace') {
+    if (cwUserGrid[r][c]) { cwUserGrid[r][c] = ''; const inp = getCwInput(r,c); if(inp) inp.value=''; saveCwProgress(); }
+    else movePrev(r, c);
+    e.preventDefault();
+  } else if (e.key==='ArrowRight') { moveDir(r,c,0,1);  e.preventDefault(); }
+    else if (e.key==='ArrowLeft')  { moveDir(r,c,0,-1); e.preventDefault(); }
+    else if (e.key==='ArrowDown')  { moveDir(r,c,1,0);  e.preventDefault(); }
+    else if (e.key==='ArrowUp')    { moveDir(r,c,-1,0); e.preventDefault(); }
+}
+
+function moveNext(r,c) {
+  const dr = cwDirection==='down'?1:0, dc = cwDirection==='across'?1:0;
+  let nr=r+dr, nc=c+dc;
+  while(nr<cwData.grid.length && nc<cwData.grid[0].length) {
+    if(cwData.grid[nr][nc]!=='#') { selectCell(nr,nc); getCwInput(nr,nc)?.focus(); return; }
+    nr+=dr; nc+=dc;
+  }
+}
+function movePrev(r,c) {
+  const dr = cwDirection==='down'?-1:0, dc = cwDirection==='across'?-1:0;
+  let nr=r+dr, nc=c+dc;
+  while(nr>=0 && nc>=0) {
+    if(cwData.grid[nr][nc]!=='#') { selectCell(nr,nc); getCwInput(nr,nc)?.focus(); return; }
+    nr+=dr; nc+=dc;
+  }
+}
+function moveDir(r,c,dr,dc) {
+  let nr=r+dr, nc=c+dc;
+  while(nr>=0&&nc>=0&&nr<cwData.grid.length&&nc<cwData.grid[0].length) {
+    if(cwData.grid[nr][nc]!=='#') { selectCell(nr,nc); getCwInput(nr,nc)?.focus(); return; }
+    nr+=dr; nc+=dc;
+  }
+}
+
+// ─────────────────────────────────────────
+// KREUZWORT-AUTOCHECK (nach vollst. Wort)
+// ─────────────────────────────────────────
+function isWordSolvedCl(cl, dir) {
+  const dr = dir==='across'?0:1, dc = dir==='across'?1:0;
+  for (let i=0; i<cl.answer.length; i++) {
+    const r=cl.row+dr*i, c=cl.col+dc*i;
+    if((cwUserGrid[r][c]||'').toUpperCase()!==cl.answer[i].toUpperCase()) return false;
+  }
+  return true;
+}
+
+function isCellInSolvedWord(r, c) {
+  for (const dir of ['across','down']) {
+    const clues = cwData.clues[dir]||[];
+    const dr = dir==='across'?0:1, dc = dir==='across'?1:0;
+    for (const cl of clues) {
+      if (!cwSolvedWords.has(cl.number+(dir==='across'?'A':'D'))) continue;
+      for (let i=0; i<cl.answer.length; i++) {
+        if (cl.row+dr*i===r && cl.col+dc*i===c) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function flashWordCells(cl, dir, cssClass, callback) {
+  const dr = dir==='across'?0:1, dc = dir==='across'?1:0;
+  const cells = [];
+  for (let i=0; i<cl.answer.length; i++) {
+    const td = getCwTd(cl.row+dr*i, cl.col+dc*i);
+    if (td) { td.classList.add(cssClass); cells.push(td); }
+  }
+  setTimeout(() => {
+    cells.forEach(td => td.classList.remove(cssClass));
+    if (callback) callback();
+  }, 1000);
+}
+
+function checkWordCompletion(inputR, inputC) {
+  for (const dir of ['across','down']) {
+    const clues = cwData.clues[dir]||[];
+    const dr = dir==='across'?0:1, dc = dir==='across'?1:0;
+    const wordKey = k => k + (dir==='across'?'A':'D');
+
+    for (const cl of clues) {
+      if (cwSolvedWords.has(wordKey(cl.number))) continue;
+      // Liegt die gerade eingetippte Zelle in diesem Wort?
+      let inWord = false;
+      for (let i=0; i<cl.answer.length; i++) {
+        if (cl.row+dr*i===inputR && cl.col+dc*i===inputC) { inWord=true; break; }
+      }
+      if (!inWord) continue;
+
+      // Alle Zellen dieses Wortes gefüllt?
+      let allFilled = true;
+      for (let i=0; i<cl.answer.length; i++) {
+        if (!(cwUserGrid[cl.row+dr*i][cl.col+dc*i])) { allFilled=false; break; }
+      }
+      if (!allFilled) continue;
+
+      // Korrekt?
+      if (isWordSolvedCl(cl, dir)) {
+        cwSolvedWords.add(wordKey(cl.number));
+        // Zellen dauerhaft grün markieren
+        for (let i=0; i<cl.answer.length; i++) {
+          const td = getCwTd(cl.row+dr*i, cl.col+dc*i);
+          if (td) td.classList.add('auto-correct');
+        }
+        flashWordCells(cl, dir, 'flash-green', () => {
+          renderCrosswordClues();
+          // Alle Wörter gelöst?
+          const total = (cwData.clues.across||[]).length + (cwData.clues.down||[]).length;
+          if (cwSolvedWords.size >= total && !progress[cwData.id]?.solved) {
+            progress[cwData.id] = {...(progress[cwData.id]||{}), solved: true};
+            saveProgress();
+            setTimeout(() => showPopup('🥰','Super gemacht du Rätselmaus 🥰','','Ich bin eine Rätselmaus 🥰', showCrosswordCountdown), 400);
+          }
+        });
+      } else {
+        // Rot aufleuchten, dann falsche Buchstaben löschen
+        flashWordCells(cl, dir, 'flash-red', () => {
+          for (let i=0; i<cl.answer.length; i++) {
+            const r=cl.row+dr*i, c=cl.col+dc*i;
+            if (!isCellInSolvedWord(r,c)) {
+              cwUserGrid[r][c]='';
+              const inp = getCwInput(r,c);
+              if (inp) inp.value='';
+            }
+          }
+          saveCwProgress();
+        });
+      }
+    }
+  }
+}
+
+function saveCwProgress() {
+  if (!cwData) return;
+  if (!progress[cwData.id]) progress[cwData.id] = {};
+  progress[cwData.id].userGrid = cwUserGrid.map(row => [...row]);
+  saveProgress();
+}
+
+function renderCrosswordClues() {
+  const el = document.getElementById('cw-clues');
+  const activeClue = cwSelected ? getClueAt(cwSelected.r, cwSelected.c, cwDirection) : null;
+  let html = '';
+  ['across','down'].forEach(dir => {
+    const label = dir==='across' ? 'Waagerecht' : 'Senkrecht';
+    const clues = cwData.clues[dir]||[];
+    if (!clues.length) return;
+    html += `<div class="cw-clue-section"><div class="cw-clue-title">${label}</div>`;
+    clues.forEach(cl => {
+      const solved = cwSolvedWords.has(cl.number + (dir==='across'?'A':'D'));
+      const active = activeClue && activeClue.number===cl.number && cwDirection===dir;
+      html += `<div class="cw-clue-item ${solved?'solved':''} ${active?'active-clue':''}" onclick="jumpToClue(${cl.row},${cl.col},'${dir}')">
+        <span class="cw-clue-num">${cl.number}</span>
+        <span class="cw-clue-text">${cl.clue}</span>
+      </div>`;
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function isWordSolved(cl, dir) {
+  for (let i=0; i<cl.answer.length; i++) {
+    const r=dir==='across'?cl.row:cl.row+i, c=dir==='across'?cl.col+i:cl.col;
+    if((cwUserGrid[r][c]||'').toUpperCase()!==cl.answer[i].toUpperCase()) return false;
+  }
+  return true;
+}
+
+function jumpToClue(r,c,dir) {
+  cwDirection=dir; cwSelected={r,c};
+  applyCwHighlight(); renderCrosswordClues();
+  getCwInput(r,c)?.focus();
+  document.querySelector('.cw-wrapper').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function checkCrossword() {
+  let allCorrect = true;
+  document.querySelectorAll('.cw-cell:not(.black)').forEach(td => {
+    const r=+td.dataset.r, c=+td.dataset.c;
+    td.classList.remove('correct-cell','wrong-cell');
+    const user=(cwUserGrid[r][c]||'').toUpperCase(), correct=cwData.grid[r][c].toUpperCase();
+    if (user) { if(user===correct) td.classList.add('correct-cell'); else { td.classList.add('wrong-cell'); allCorrect=false; } }
+    else allCorrect=false;
+  });
+  if (allCorrect) {
+    progress[cwData.id]={...(progress[cwData.id]||{}),solved:true}; saveProgress();
+    showPopup('🥰','Super gemacht du Rätselmaus 🥰','','Ich bin eine Rätselmaus 🥰', showCrosswordCountdown);
+  } else {
+    showPopup('🔍','Fast!','Rote Felder sind noch falsch. Versuch es nochmal!');
+  }
+}
+
+function revealCrossword() {
+  cwData.grid.forEach((row,r) => row.forEach((cell,c) => {
+    if(cell!=='#') { cwUserGrid[r][c]=cell; const inp=getCwInput(r,c); if(inp) inp.value=cell; }
+  }));
+  saveCwProgress();
+  progress[cwData.id]={...progress[cwData.id],solved:true}; saveProgress();
+  document.querySelectorAll('.cw-cell:not(.black)').forEach(td => { td.classList.remove('wrong-cell'); td.classList.add('correct-cell'); });
+  showPopup('💡','Auflösung','Hier ist die vollständige Lösung. Beim nächsten Mal schaffst du es alleine!');
+}
+
+// ─────────────────────────────────────────
+// POPUP
+// ─────────────────────────────────────────
+let _popupCallback = null;
+
+function showPopup(emoji, title, msg, btnText='OK 🎉', callback=null) {
+  _popupCallback = callback;
+  document.getElementById('popupEmoji').textContent = emoji;
+  document.getElementById('popupTitle').textContent = title;
+  document.getElementById('popupMsg').textContent   = msg;
+  document.getElementById('popupBtn').textContent   = btnText;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('overlay').classList.remove('show');
+  if (_popupCallback) { const cb = _popupCallback; _popupCallback = null; cb(); }
+}
+
+// ─────────────────────────────────────────
+// COUNTDOWN NACH SIEG
+// ─────────────────────────────────────────
+function cdScreenHtml(title, timeId, dateLabel) {
+  return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;padding:32px 20px;text-align:center;">
+    <div style="font-size:48px;margin-bottom:18px;">⏳</div>
+    <div style="font-size:16px;font-weight:700;color:var(--subtext);letter-spacing:0.5px;margin-bottom:6px;">${title}</div>
+    <div id="${timeId}" style="font-size:40px;font-weight:800;color:var(--accent);margin:10px 0;font-variant-numeric:tabular-nums;letter-spacing:2px;">--:--:--</div>
+    <div style="font-size:13px;color:var(--subtext);margin-top:4px;">${dateLabel}</div>
+  </div>`;
+}
+
+function cdScreenDoneHtml(msg) {
+  return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;padding:32px 20px;text-align:center;">
+    <div style="font-size:48px;margin-bottom:18px;">🏆</div>
+    <div style="font-size:18px;font-weight:700;margin-bottom:8px;">${msg}</div>
+    <div style="font-size:14px;color:var(--subtext);">Du bist die allerbeste Rätselmaus 🥰</div>
+  </div>`;
+}
+
+function showWordleCountdown() {
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const next = (puzzles.wordle || []).find(p => p.date > todayStr);
+  const el = document.getElementById('wordle-screen');
+  if (next) {
+    const unlock = new Date(next.date + 'T00:00:00');
+    const label  = unlock.toLocaleDateString('de-DE', { weekday:'long', day:'numeric', month:'long' });
+    el.innerHTML = cdScreenHtml('Nächstes Wordle in', 'wl-cd-time', label);
+    startCountdown(unlock, 'wl-cd-time');
+  } else {
+    el.innerHTML = cdScreenDoneHtml('Alle Wordles gelöst!');
+  }
+}
+
+function showCrosswordCountdown() {
+  const next = (puzzles.crossword || []).find(p => p.id !== cwData?.id && !isCrosswordUnlocked(p));
+  const el = document.getElementById('crossword-screen');
+  if (next) {
+    const unlock = crosswordUnlockTime(next);
+    const label  = unlock.toLocaleDateString('de-DE', { weekday:'long', day:'numeric', month:'long' })
+                 + ' um ' + String(unlock.getHours()).padStart(2,'0') + ':00 Uhr';
+    el.innerHTML = cdScreenHtml('Nächstes Kreuzworträtsel in', 'cw-cd-time', label);
+    startCountdown(unlock, 'cw-cd-time');
+  } else {
+    el.innerHTML = cdScreenDoneHtml('Alle Kreuzworträtsel gelöst!');
+  }
+}
+
+// ─────────────────────────────────────────
+// HARDWARE KEYBOARD (Wordle)
+// ─────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (document.querySelector('.screen.active')?.id !== 'wordle-screen') return;
+  if (e.metaKey||e.ctrlKey||e.altKey) return;
+  const k = e.key.toUpperCase();
+  if (k==='ENTER') handleWordleKey('↵');
+  else if (k==='BACKSPACE') handleWordleKey('⌫');
+  else if (/^[A-Z]$/.test(k)) handleWordleKey(k);
+});
+
+// ─────────────────────────────────────────
+// SERVICE WORKER
+// ─────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.warn));
+}
+
+init();
+</script>
+</body>
+</html>

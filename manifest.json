@@ -1,0 +1,22 @@
+{
+  "name": "Datzi's Rätselspaß",
+  "short_name": "Datzi's Rätselspaß",
+  "description": "Kreuzworträtsel, Wordle und Überraschungen von David für Datzi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#e8a0bf",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
