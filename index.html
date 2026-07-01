@@ -740,42 +740,35 @@ function updateHomeBadges() {
 }
 
 // ─────────────────────────────────────────
-// WORDLE LIST
+// WORDLE — direkt zum aktuellen Rätsel
 // ─────────────────────────────────────────
 function showWordleList() {
-  const el = document.getElementById('wordle-list');
-  if (!puzzles.wordle.length) {
-    el.innerHTML = '<div class="empty-state">Noch keine Wordles — David baut bald welche! 🕐</div>';
-  } else {
-    const todayStr = new Date().toISOString().slice(0, 10);
-    el.innerHTML = puzzles.wordle.map(p => {
-      const unlocked = !p.date || p.date <= todayStr;
-      const done = progress[p.id]?.won;
-      const dots = '⬜'.repeat(p.length); // show word length visually
-      if (!unlocked) {
-        // locked — show teaser
-        const d = p.date ? p.date.slice(8,10) + '.' + p.date.slice(5,7) + '.' : '';
-        return `<div class="puzzle-card" style="opacity:0.45; cursor:default;">
-          <div class="puzzle-icon">🔒</div>
-          <div class="puzzle-info">
-            <div class="name">${p.title}</div>
-            <div class="meta">${dots} · ${p.length} Buchstaben</div>
-            <span class="badge" style="background:var(--gray);">Ab ${d} verfügbar</span>
-          </div>
-        </div>`;
-      }
-      return `<div class="puzzle-card" onclick="startWordle('${p.id}')">
-        <div class="puzzle-icon">🔤</div>
-        <div class="puzzle-info">
-          <div class="name">${p.title}</div>
-          <div class="meta">${dots} · ${p.length} Buchstaben</div>
-          ${done ? '<span class="badge done">✓ Gelöst</span>' : '<span class="badge">Neu!</span>'}
-        </div>
-        <div class="puzzle-arrow">›</div>
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const unlocked = (puzzles.wordle || []).filter(p => !p.date || p.date <= todayStr);
+
+  if (!unlocked.length) {
+    // Noch kein Rätsel freigeschaltet — Countdown anzeigen
+    const next = (puzzles.wordle || []).find(p => p.date > todayStr);
+    const el = document.getElementById('wordle-list');
+    if (next) {
+      const unlock = new Date(next.date + 'T00:00:00');
+      const label = unlock.toLocaleDateString('de-DE', { weekday:'long', day:'numeric', month:'long' });
+      el.innerHTML = `<div class="countdown-box">
+        <div class="cd-label">🔤 Erstes Wordle in</div>
+        <div class="cd-time" id="wl-cd-display">--:--:--</div>
+        <div class="cd-sub">${label}</div>
       </div>`;
-    }).join('');
+      startCountdown(unlock, 'wl-cd-display');
+    } else {
+      el.innerHTML = '<div class="empty-state">David baut bald Wordles ein! 🕐</div>';
+    }
+    showScreen('wordle-list-screen', '🔤 Wordle');
+    return;
   }
-  showScreen('wordle-list-screen', '🔤 Wordle');
+
+  // Direkt das aktuellste freigeschaltete Rätsel öffnen
+  const current = unlocked[unlocked.length - 1];
+  startWordle(current.id);
 }
 
 // ─────────────────────────────────────────
@@ -824,8 +817,8 @@ function startCountdown(targetDate, containerId) {
 // ─────────────────────────────────────────
 // CROSSWORD LIST
 // ─────────────────────────────────────────
-// Hartcodierter Fallback: erstes Kreuzworträtsel 16.07. um 00:00
-const FIRST_CROSSWORD_UNLOCK = new Date('2026-07-16T00:00:00');
+// Hartcodierter Fallback: nächstes Kreuzworträtsel 20.07. um 08:00
+const FIRST_CROSSWORD_UNLOCK = new Date('2026-07-20T08:00:00');
 
 function showCrosswordList() {
   const el = document.getElementById('crossword-list');
@@ -836,7 +829,7 @@ function showCrosswordList() {
     if (now < FIRST_CROSSWORD_UNLOCK) {
       const dateLabel = FIRST_CROSSWORD_UNLOCK.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
       el.innerHTML = `<div class="countdown-box">
-        <div class="cd-label">🔲 Erstes Kreuzworträtsel in</div>
+        <div class="cd-label">🔲 Nächstes Kreuzworträtsel in</div>
         <div class="cd-time" id="cd-display">--:--:--</div>
         <div class="cd-sub">${dateLabel} um 08:00 Uhr</div>
       </div>`;
@@ -934,6 +927,12 @@ function showPhoto() {
   const img = document.createElement('img');
   img.src = photo.src;
   img.alt = photo.caption || 'Bild von David';
+  img.onerror = () => {
+    img.remove();
+    placeholder.style.display = 'block';
+    placeholder.querySelector('p').innerHTML = 'Die Bilder kommen bald 📷<br>David lädt sie noch hoch!';
+    msgBox.style.display = 'none';
+  };
   frame.appendChild(img);
 
   if (photo.caption) {
