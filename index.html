@@ -6,21 +6,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Datzi's Rätselspaß">
-  <meta name="theme-color" content="#1a1a2e">
+  <meta name="theme-color" content="#7a9e82">
   <link rel="manifest" href="manifest.json">
   <title>Datzi's Rätselspaß 🧩🥰</title>
   <style>
     :root {
-      --bg:        #1a1a2e;
-      --surface:   #16213e;
-      --card:      #0f3460;
-      --accent:    #e94560;
-      --accent2:   #f5a623;
-      --green:     #5cb85c;
-      --yellow:    #f0ad4e;
-      --gray:      #4a4a6a;
-      --text:      #eaeaea;
-      --subtext:   #9999bb;
+      --bg:        #f4ede2;
+      --surface:   #ede4d3;
+      --card:      #faf6ee;
+      --accent:    #7a9e82;
+      --accent2:   #b5886e;
+      --green:     #5d9467;
+      --yellow:    #c8a44e;
+      --gray:      #b0a090;
+      --text:      #3a2e24;
+      --subtext:   #7a6b58;
       --radius:    14px;
       --cell:      44px;
     }
@@ -44,7 +44,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 2px solid rgba(122,158,130,0.35);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -79,7 +79,7 @@
     /* Daily quote */
     .daily-quote {
       margin: 14px 4px 24px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(122,158,130,0.08);
       border-left: 3px solid var(--accent);
       border-radius: 0 10px 10px 0;
       padding: 12px 14px;
@@ -107,7 +107,16 @@
     }
 
     .home-tile {
-      background: var(--card);
+      background-color: var(--card);
+      background-image:
+        radial-gradient(ellipse 5px 10px at 30px 18px, rgba(210,165,190,0.2) 100%, transparent 100%),
+        radial-gradient(ellipse 5px 10px at 30px 42px, rgba(210,165,190,0.2) 100%, transparent 100%),
+        radial-gradient(ellipse 10px 5px at 18px 30px, rgba(210,165,190,0.2) 100%, transparent 100%),
+        radial-gradient(ellipse 10px 5px at 42px 30px, rgba(210,165,190,0.2) 100%, transparent 100%),
+        radial-gradient(circle 4px at 30px 30px, rgba(235,208,145,0.35) 100%, transparent 100%),
+        radial-gradient(ellipse 4px 8px at 52px 8px, rgba(145,185,145,0.18) 100%, transparent 100%),
+        radial-gradient(ellipse 8px 4px at 8px 52px, rgba(145,185,145,0.18) 100%, transparent 100%);
+      background-size: 60px 60px;
       border-radius: 18px;
       padding: 20px 18px;
       cursor: pointer;
@@ -127,10 +136,10 @@
       opacity: 0;
       transition: opacity 0.15s;
     }
-    .home-tile.tile-wordle::before  { background: linear-gradient(135deg, rgba(92,184,92,0.15), transparent); }
-    .home-tile.tile-cross::before   { background: linear-gradient(135deg, rgba(245,166,35,0.15), transparent); }
-    .home-tile.tile-photo::before   { background: linear-gradient(135deg, rgba(233,69,96,0.2), transparent); }
-    .home-tile:active { transform: scale(0.97); border-color: rgba(255,255,255,0.15); }
+    .home-tile.tile-wordle::before  { background: linear-gradient(135deg, rgba(93,148,103,0.18), transparent); }
+    .home-tile.tile-cross::before   { background: linear-gradient(135deg, rgba(181,136,110,0.18), transparent); }
+    .home-tile.tile-photo::before   { background: linear-gradient(135deg, rgba(200,164,78,0.18), transparent); }
+    .home-tile:active { transform: scale(0.97); border-color: rgba(122,158,130,0.5); }
     .home-tile:active::before { opacity: 1; }
 
     .tile-icon {
@@ -166,7 +175,16 @@
     /* ───── PUZZLE LIST (sub-screens) ───── */
     .puzzle-list { display: flex; flex-direction: column; gap: 10px; }
     .puzzle-card {
-      background: var(--card);
+      background-color: var(--card);
+      background-image:
+        radial-gradient(ellipse 5px 10px at 30px 18px, rgba(210,165,190,0.18) 100%, transparent 100%),
+        radial-gradient(ellipse 5px 10px at 30px 42px, rgba(210,165,190,0.18) 100%, transparent 100%),
+        radial-gradient(ellipse 10px 5px at 18px 30px, rgba(210,165,190,0.18) 100%, transparent 100%),
+        radial-gradient(ellipse 10px 5px at 42px 30px, rgba(210,165,190,0.18) 100%, transparent 100%),
+        radial-gradient(circle 4px at 30px 30px, rgba(235,208,145,0.3) 100%, transparent 100%),
+        radial-gradient(ellipse 4px 8px at 52px 8px, rgba(145,185,145,0.15) 100%, transparent 100%),
+        radial-gradient(ellipse 8px 4px at 8px 52px, rgba(145,185,145,0.15) 100%, transparent 100%);
+      background-size: 60px 60px;
       border-radius: var(--radius);
       padding: 14px 16px;
       cursor: pointer;
@@ -177,7 +195,7 @@
       transition: border-color 0.15s, transform 0.1s;
       -webkit-user-select: none;
     }
-    .puzzle-card:active { transform: scale(0.98); border-color: var(--accent); }
+    .puzzle-card:active { transform: scale(0.98); border-color: var(--accent); background-color: rgba(122,158,130,0.08); }
     .puzzle-icon { font-size: 28px; flex-shrink: 0; width: 48px; text-align: center; }
     .puzzle-info { flex: 1; min-width: 0; }
     .puzzle-info .name { font-weight: 600; font-size: 15px; }
@@ -219,7 +237,8 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(122,158,130,0.3);
+      box-shadow: 0 2px 12px rgba(122,158,130,0.1);
     }
     .photo-frame img {
       width: 100%;
@@ -244,8 +263,8 @@
       font-weight: 700;
     }
     .photo-msg {
-      background: rgba(233,69,96,0.1);
-      border: 1px solid rgba(233,69,96,0.25);
+      background: rgba(122,158,130,0.1);
+      border: 1px solid rgba(122,158,130,0.3);
       border-radius: 12px;
       padding: 12px 16px;
       font-size: 13px;
@@ -258,12 +277,12 @@
     #wordle-screen { padding-bottom: 20px; }
     .wordle-hint {
       text-align: center;
-      background: rgba(249,165,35,0.12);
-      border: 1px solid rgba(249,165,35,0.3);
+      background: rgba(122,158,130,0.1);
+      border: 1px solid rgba(122,158,130,0.35);
       border-radius: 10px;
       padding: 10px 14px;
       font-size: 13px;
-      color: var(--accent2);
+      color: var(--accent);
       margin-bottom: 18px;
     }
     .wordle-grid {
@@ -286,13 +305,13 @@
       font-weight: 700;
       text-transform: uppercase;
       transition: background 0.25s, border-color 0.25s;
-      color: white;
+      color: var(--text);
     }
     .wordle-cell.filled   { border-color: var(--subtext); }
-    .wordle-cell.correct  { background: var(--green);  border-color: var(--green); }
-    .wordle-cell.present  { background: var(--yellow); border-color: var(--yellow); }
-    .wordle-cell.absent   { background: var(--gray);   border-color: var(--gray); }
-    .wordle-cell.active   { border-color: white; }
+    .wordle-cell.correct  { background: var(--green);  border-color: var(--green);  color: white; }
+    .wordle-cell.present  { background: var(--yellow); border-color: var(--yellow); color: white; }
+    .wordle-cell.absent   { background: var(--gray);   border-color: var(--gray);   color: white; }
+    .wordle-cell.active   { border-color: var(--accent); }
 
     .wordle-keyboard { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
     .kb-row { display: flex; justify-content: center; gap: 4px; }
@@ -312,9 +331,9 @@
       transition: background 0.15s;
     }
     .kb-key.wide    { max-width: 50px; font-size: 11px; }
-    .kb-key.correct { background: var(--green); }
-    .kb-key.present { background: var(--yellow); color: #111; }
-    .kb-key.absent  { background: #2a2a4a; color: var(--subtext); }
+    .kb-key.correct { background: var(--green);  color: white; }
+    .kb-key.present { background: var(--yellow); color: white; }
+    .kb-key.absent  { background: var(--gray);   color: white; }
     .kb-key:active  { opacity: 0.7; }
 
     .wordle-status {
@@ -325,12 +344,12 @@
       min-height: 44px;
     }
     .wordle-status.win  { color: var(--green); }
-    .wordle-status.lose { color: var(--accent); }
+    .wordle-status.lose { color: var(--accent2); }
 
     /* ───── COUNTDOWN ───── */
     .countdown-box {
-      background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(233,69,96,0.08));
-      border: 1px solid rgba(245,166,35,0.3);
+      background: linear-gradient(135deg, rgba(122,158,130,0.12), rgba(181,136,110,0.08));
+      border: 1px solid rgba(122,158,130,0.3);
       border-radius: 16px;
       padding: 20px 16px;
       text-align: center;
@@ -399,13 +418,13 @@
     .cw-cell {
       width: 34px;
       height: 34px;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(58,46,36,0.2);
       position: relative;
       vertical-align: top;
     }
-    .cw-cell.black { background: #111; border-color: #111; }
-    .cw-cell.selected { background: rgba(233,69,96,0.35) !important; }
-    .cw-cell.highlighted { background: rgba(233,69,96,0.12); }
+    .cw-cell.black { background: #4a3830; border-color: #4a3830; }
+    .cw-cell.selected { background: rgba(122,158,130,0.45) !important; }
+    .cw-cell.highlighted { background: rgba(122,158,130,0.15); }
     .cw-cell input {
       position: absolute;
       inset: 0;
@@ -457,8 +476,8 @@
       transition: background 0.12s;
       margin-bottom: 4px;
     }
-    .cw-clue-item:active { background: rgba(255,255,255,0.05); }
-    .cw-clue-item.active-clue { background: rgba(233,69,96,0.12); }
+    .cw-clue-item:active { background: rgba(0,0,0,0.05); }
+    .cw-clue-item.active-clue { background: rgba(122,158,130,0.15); }
     .cw-clue-num { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 18px; }
     .cw-clue-text { font-size: 13px; color: var(--text); line-height: 1.4; }
     .cw-clue-item.solved .cw-clue-text { color: var(--green); text-decoration: line-through; }
@@ -500,16 +519,18 @@
     }
     .overlay.show { display: flex; }
     .popup {
-      background: var(--surface);
+      background: var(--card);
       border-radius: 20px;
       padding: 28px 24px;
       max-width: 300px;
       width: 90%;
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(122,158,130,0.3);
+      box-shadow: 0 8px 32px rgba(58,46,36,0.15);
     }
     .popup .emoji { font-size: 48px; margin-bottom: 12px; }
     .popup h3 { font-size: 20px; margin-bottom: 8px; }
+    .popup h3 { font-size: 20px; margin-bottom: 8px; color: var(--text); }
     .popup p { color: var(--subtext); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
     .popup button {
       background: var(--accent);
