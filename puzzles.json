@@ -116,7 +116,6 @@
       "text": "Wuhuuuuuu, heute sehen wir uns endlich wieder!"
     }
   ],
-
   "wordle": [
     {
       "id": "w000",
@@ -349,7 +348,6 @@
       "successMessage": "Morgen gibt es die wirklich. Alle. Auf einmal 😘"
     }
   ],
-
   "crossword": [
     {
       "id": "c000",
@@ -357,25 +355,145 @@
       "date": "2026-07-01",
       "unlockHour": 0,
       "grid": [
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","J","E","C","K","#","#","#","#"],
-        ["#","#","#","#","O","#","#","#","#"],
-        ["K","A","R","N","E","V","A","L","#"],
-        ["#","#","H","#","L","#","L","#","#"],
-        ["#","#","E","#","S","#","A","#","#"],
-        ["#","#","I","#","C","#","A","#","#"],
-        ["#","#","N","#","H","#","F","#","#"]
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "J",
+          "E",
+          "C",
+          "K",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "O",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "K",
+          "A",
+          "R",
+          "N",
+          "E",
+          "V",
+          "A",
+          "L",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "H",
+          "#",
+          "L",
+          "#",
+          "L",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "E",
+          "#",
+          "S",
+          "#",
+          "A",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "I",
+          "#",
+          "C",
+          "#",
+          "A",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "N",
+          "#",
+          "H",
+          "#",
+          "F",
+          "#",
+          "#"
+        ]
       ],
       "clues": {
         "across": [
-          {"number": 1, "row": 2, "col": 1, "answer": "JECK",     "clue": "Karnevalsnarr — auf Kölsch"},
-          {"number": 3, "row": 4, "col": 0, "answer": "KARNEVAL", "clue": "Die fünfte Jahreszeit — Köln ist ihr Zentrum 🎭"}
+          {
+            "number": 1,
+            "row": 2,
+            "col": 1,
+            "answer": "JECK",
+            "clue": "Karnevalsnarr — auf Kölsch"
+          },
+          {
+            "number": 3,
+            "row": 4,
+            "col": 0,
+            "answer": "KARNEVAL",
+            "clue": "Die fünfte Jahreszeit — Köln ist ihr Zentrum 🎭"
+          }
         ],
         "down": [
-          {"number": 2, "row": 2, "col": 4, "answer": "KOELSCH",  "clue": "Das Lieblingsgetränk der Kölner 🍺"},
-          {"number": 4, "row": 4, "col": 2, "answer": "RHEIN",    "clue": "Der Fluss, an dem Köln liegt"},
-          {"number": 5, "row": 4, "col": 6, "answer": "ALAAF",    "clue": "Kölner Karnevalsruf — dreimal! 🎉"}
+          {
+            "number": 2,
+            "row": 2,
+            "col": 4,
+            "answer": "KOELSCH",
+            "clue": "Das Lieblingsgetränk der Kölner 🍺"
+          },
+          {
+            "number": 4,
+            "row": 4,
+            "col": 2,
+            "answer": "RHEIN",
+            "clue": "Der Fluss, an dem Köln liegt"
+          },
+          {
+            "number": 5,
+            "row": 4,
+            "col": 6,
+            "answer": "ALAAF",
+            "clue": "Kölner Karnevalsruf — dreimal! 🎉"
+          }
         ]
       }
     },
@@ -385,26 +503,152 @@
       "date": "2026-07-20",
       "unlockHour": 8,
       "grid": [
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","R","#","#","#","#","#","#","B"],
-        ["#","E","#","#","I","N","S","E","L"],
-        ["#","I","#","#","#","#","T","#","A"],
-        ["#","S","O","M","M","E","R","#","U"],
-        ["#","E","#","#","E","#","A","#","#"],
-        ["#","#","#","#","E","#","N","#","#"],
-        ["#","#","#","#","R","#","D","#","#"],
-        ["#","#","#","#","#","#","#","#","#"]
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "R",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "B"
+        ],
+        [
+          "#",
+          "E",
+          "#",
+          "#",
+          "I",
+          "N",
+          "S",
+          "E",
+          "L"
+        ],
+        [
+          "#",
+          "I",
+          "#",
+          "#",
+          "#",
+          "#",
+          "T",
+          "#",
+          "A"
+        ],
+        [
+          "#",
+          "S",
+          "O",
+          "M",
+          "M",
+          "E",
+          "R",
+          "#",
+          "U"
+        ],
+        [
+          "#",
+          "E",
+          "#",
+          "#",
+          "E",
+          "#",
+          "A",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "E",
+          "#",
+          "N",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "R",
+          "#",
+          "D",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ]
       ],
       "clues": {
         "across": [
-          {"number": 3, "row": 2, "col": 4, "answer": "INSEL",  "clue": "Wo Datzi Urlaub macht 🏝️"},
-          {"number": 5, "row": 4, "col": 1, "answer": "SOMMER", "clue": "Die schönste Jahreszeit ☀️"}
+          {
+            "number": 3,
+            "row": 2,
+            "col": 4,
+            "answer": "INSEL",
+            "clue": "Wo Datzi Urlaub macht 🏝️"
+          },
+          {
+            "number": 5,
+            "row": 4,
+            "col": 1,
+            "answer": "SOMMER",
+            "clue": "Die schönste Jahreszeit ☀️"
+          }
         ],
         "down": [
-          {"number": 1, "row": 1, "col": 1, "answer": "REISE",  "clue": "Was Datzi gerade macht ✈️"},
-          {"number": 2, "row": 1, "col": 8, "answer": "BLAU",   "clue": "Die Farbe des Meeres und des Himmels"},
-          {"number": 4, "row": 2, "col": 6, "answer": "STRAND", "clue": "Sand, Sonne, Meer — der perfekte Ort"},
-          {"number": 6, "row": 4, "col": 4, "answer": "MEER",   "clue": "Das Salzwasser, das Elba umgibt"}
+          {
+            "number": 1,
+            "row": 1,
+            "col": 1,
+            "answer": "REISE",
+            "clue": "Was Datzi gerade macht ✈️"
+          },
+          {
+            "number": 2,
+            "row": 1,
+            "col": 8,
+            "answer": "BLAU",
+            "clue": "Die Farbe des Meeres und des Himmels"
+          },
+          {
+            "number": 4,
+            "row": 2,
+            "col": 6,
+            "answer": "STRAND",
+            "clue": "Sand, Sonne, Meer — der perfekte Ort"
+          },
+          {
+            "number": 6,
+            "row": 4,
+            "col": 4,
+            "answer": "MEER",
+            "clue": "Das Salzwasser, das Elba umgibt"
+          }
         ]
       }
     },
@@ -414,25 +658,145 @@
       "date": "2026-07-27",
       "unlockHour": 8,
       "grid": [
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","#","#","#","H","#","#","#","#"],
-        ["#","#","#","#","E","#","#","#","#"],
-        ["#","L","#","T","R","A","U","M","#"],
-        ["#","I","#","#","Z","#","#","#","#"],
-        ["F","E","R","N","E","#","#","#","#"],
-        ["#","B","#","#","N","A","C","H","T"],
-        ["#","E","#","#","#","#","#","#","#"],
-        ["#","#","#","#","#","#","#","#","#"]
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "H",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "E",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "L",
+          "#",
+          "T",
+          "R",
+          "A",
+          "U",
+          "M",
+          "#"
+        ],
+        [
+          "#",
+          "I",
+          "#",
+          "#",
+          "Z",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "F",
+          "E",
+          "R",
+          "N",
+          "E",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "B",
+          "#",
+          "#",
+          "N",
+          "A",
+          "C",
+          "H",
+          "T"
+        ],
+        [
+          "#",
+          "E",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ]
       ],
       "clues": {
         "across": [
-          {"number": 3, "row": 3, "col": 3, "answer": "TRAUM", "clue": "Was man nachts erlebt — oder tagsüber, wenn man an jemanden denkt"},
-          {"number": 4, "row": 5, "col": 0, "answer": "FERNE", "clue": "Dort, wo Datzi gerade ist"},
-          {"number": 5, "row": 6, "col": 4, "answer": "NACHT", "clue": "Wenn die Sterne leuchten und man an jemanden denkt"}
+          {
+            "number": 3,
+            "row": 3,
+            "col": 3,
+            "answer": "TRAUM",
+            "clue": "Was man nachts erlebt — oder tagsüber, wenn man an jemanden denkt"
+          },
+          {
+            "number": 4,
+            "row": 5,
+            "col": 0,
+            "answer": "FERNE",
+            "clue": "Dort, wo Datzi gerade ist"
+          },
+          {
+            "number": 5,
+            "row": 6,
+            "col": 4,
+            "answer": "NACHT",
+            "clue": "Wenn die Sterne leuchten und man an jemanden denkt"
+          }
         ],
         "down": [
-          {"number": 1, "row": 1, "col": 4, "answer": "HERZEN", "clue": "Was zwischen zwei Menschen schlägt — im Plural"},
-          {"number": 2, "row": 3, "col": 1, "answer": "LIEBE",  "clue": "Das stärkste Gefühl der Welt"}
+          {
+            "number": 1,
+            "row": 1,
+            "col": 4,
+            "answer": "HERZEN",
+            "clue": "Was zwischen zwei Menschen schlägt — im Plural"
+          },
+          {
+            "number": 2,
+            "row": 3,
+            "col": 1,
+            "answer": "LIEBE",
+            "clue": "Das stärkste Gefühl der Welt"
+          }
         ]
       }
     },
@@ -442,121 +806,240 @@
       "date": "2026-08-03",
       "unlockHour": 8,
       "grid": [
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","#","#","#","#","#","#","#","#"],
-        ["#","#","#","#","#","F","#","#","#"],
-        ["#","#","#","#","#","R","#","#","#"],
-        ["#","B","L","U","M","E","N","#","#"],
-        ["#","R","#","#","#","U","#","#","#"],
-        ["T","A","N","Z","#","D","#","#","#"],
-        ["#","U","#","#","F","E","I","E","R"],
-        ["#","T","#","#","#","#","#","#","#"]
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "F",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "R",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "B",
+          "L",
+          "U",
+          "M",
+          "E",
+          "N",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "R",
+          "#",
+          "#",
+          "#",
+          "U",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "T",
+          "A",
+          "N",
+          "Z",
+          "#",
+          "D",
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "U",
+          "#",
+          "#",
+          "F",
+          "E",
+          "I",
+          "E",
+          "R"
+        ],
+        [
+          "#",
+          "T",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#",
+          "#"
+        ]
       ],
       "clues": {
         "across": [
-          {"number": 2, "row": 4, "col": 1, "answer": "BLUMEN", "clue": "Was bei einer Hochzeit nie fehlen darf 💐"},
-          {"number": 3, "row": 6, "col": 0, "answer": "TANZ",   "clue": "Was man auf einer Hochzeit macht 💃"},
-          {"number": 4, "row": 7, "col": 4, "answer": "FEIER",  "clue": "Erst die Trauung, dann das große ___"}
+          {
+            "number": 2,
+            "row": 4,
+            "col": 1,
+            "answer": "BLUMEN",
+            "clue": "Was bei einer Hochzeit nie fehlen darf 💐"
+          },
+          {
+            "number": 3,
+            "row": 6,
+            "col": 0,
+            "answer": "TANZ",
+            "clue": "Was man auf einer Hochzeit macht 💃"
+          },
+          {
+            "number": 4,
+            "row": 7,
+            "col": 4,
+            "answer": "FEIER",
+            "clue": "Erst die Trauung, dann das große ___"
+          }
         ],
         "down": [
-          {"number": 1, "row": 2, "col": 5, "answer": "FREUDE", "clue": "Das Gefühl, wenn man jemanden endlich wiedersieht"},
-          {"number": 2, "row": 4, "col": 1, "answer": "BRAUT",  "clue": "Die Frau im weißen Kleid 👰"}
+          {
+            "number": 1,
+            "row": 2,
+            "col": 5,
+            "answer": "FREUDE",
+            "clue": "Das Gefühl, wenn man jemanden endlich wiedersieht"
+          },
+          {
+            "number": 2,
+            "row": 4,
+            "col": 1,
+            "answer": "BRAUT",
+            "clue": "Die Frau im weißen Kleid 👰"
+          }
         ]
       }
     }
   ],
-
   "photos": [
     {
-      "src": "images/PXL_20260508_150416276.MP.jpg",
+      "src": "images/1.jpg",
       "caption": "Zwei Süßmäuse auf Abenteuer 🥰"
     },
     {
-      "src": "images/IMG_1219.jpeg",
+      "src": "images/2.JPG",
       "caption": "So ein süßes Lächeln — wie jeden Tag 😍"
     },
     {
-      "src": "images/PXL_20241102_091826326.jpg",
+      "src": "images/3.jpeg",
       "caption": "Guten Morgen aus der Ferne 💕"
     },
     {
-      "src": "images/de8f7ab8-9124-4e29-b564-6ea4510a6bd0.JPG",
+      "src": "images/4.jpeg",
       "caption": "Schau mal, wer hier so schön ist 🌸"
     },
     {
-      "src": "images/PXL_20260215_141127330.jpg",
+      "src": "images/5.jpeg",
       "caption": "Manchmal reicht ein Foto, um zu lächeln 😊"
     },
     {
-      "src": "images/IMG_1423.jpeg",
+      "src": "images/6.jpeg",
       "caption": "Erinnerungen sind das Schönste, was wir haben 💭"
     },
     {
-      "src": "images/PXL_20251228_104946163.PORTRAIT.jpg",
+      "src": "images/7.jpeg",
       "caption": "Ein Moment, der zählt 🌟"
     },
     {
-      "src": "images/PXL_20260301_115318624.jpg",
+      "src": "images/8.jpeg",
       "caption": "Du machst jeden Ort schöner 💕"
     },
     {
-      "src": "images/IMG_1082.jpeg",
+      "src": "images/9.jpg",
       "caption": "Knuffikuschel im Bild-Format 🐭"
     },
     {
-      "src": "images/PXL_20241101_214532916~2.jpg",
+      "src": "images/11.jpg",
       "caption": "Noch ein Bild für die Sammlung ❤️"
     },
     {
-      "src": "images/PXL_20260110_163914418.jpg",
+      "src": "images/12.jpg",
       "caption": "Schau, wie wunderbar du bist 🌟"
     },
     {
-      "src": "images/IMG_1095.jpeg",
+      "src": "images/13.jpg",
       "caption": "Zwei, die zusammengehören 💞"
     },
     {
-      "src": "images/PXL_20251012_142214677-COLLAGE.jpg",
+      "src": "images/14.jpg",
       "caption": "Dieses Bild macht mich glücklich 😊"
     },
     {
-      "src": "images/1909d4a1-75d9-4892-8b33-29791d4c8039~1.jpg",
+      "src": "images/15.jpg",
       "caption": "Ein ganz besonderer Moment 🥰"
     },
     {
-      "src": "images/PXL_20260308_140203996.jpg",
+      "src": "images/111.jpg",
       "caption": "Du fehlst mir — aber dieses Foto hilft 💕"
     },
     {
-      "src": "images/IMG_1171.jpeg",
+      "src": "images/112.jpg",
       "caption": "Heute extra viel Liebe durch den Bildschirm 💌"
     },
     {
-      "src": "images/PXL_20251227_124747069.jpg",
+      "src": "images/115.jpg",
       "caption": "Bald sind wir wieder zusammen 🌈"
     },
     {
-      "src": "images/PXL_20241123_083815686.PORTRAIT.jpg",
+      "src": "images/122.jpg",
       "caption": "Das hier ist einer meiner Lieblingsmomente 💫"
     },
     {
-      "src": "images/PXL_20260314_170707798.jpg",
+      "src": "images/123.jpg",
       "caption": "Jeden Tag ein bisschen mehr Vorfreude 🥰"
     },
     {
-      "src": "images/IMG_1039.jpeg",
+      "src": "images/213.jpg",
       "caption": "Was für ein schönes Bild — was für eine schöne Person 😍"
     },
     {
-      "src": "images/PXL_20250623_184401283.jpg",
+      "src": "images/231.jpg",
       "caption": "Nur noch ein paar Tage! 🎉"
     },
     {
-      "src": "images/PXL_20251211_170955299.MP.jpg",
+      "src": "images/312.jpg",
       "caption": "Diese Person da — ich vermisse sie so sehr 💕"
     },
     {
-      "src": "images/PXL_20260102_113935997.PORTRAIT.jpg",
+      "src": "images/321.jpg",
       "caption": "Morgen sehen wir uns endlich wieder! 🥰"
     }
   ]

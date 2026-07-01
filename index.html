@@ -606,7 +606,7 @@
 
 <!-- PHOTO -->
 <div id="photo-screen" class="screen">
-  <p class="photo-intro">Zufallsfoto zweier Süßmäuse ❤️</p>
+  <p class="photo-intro">Das ergibt die Google-Suche nach zwei Süßmäusen ❤️</p>
   <div class="photo-frame" id="photo-frame">
     <div class="photo-placeholder" id="photo-placeholder">
       <div class="big">🌅</div>
@@ -965,7 +965,7 @@ function startWordle(id) {
     currentGuess: '',
     finished: saved?.solved || false,
     won: saved?.won || false,
-    successMessage: p.successMessage || 'Richtig! Super Datzi! 🎉',
+    successMessage: p.successMessage || 'Richtig! Super, Datzi! 🎉',
   };
   showScreen('wordle-screen', p.title);
   const hintBox = document.getElementById('wordle-hint-box');
@@ -1027,7 +1027,7 @@ function renderWordleKeyboard() {
 
 function renderWordleStatus() {
   const el = document.getElementById('wordle-status');
-  if (wState.won)      { el.textContent = '🎉 Geschafft! Super Datzi!'; el.className = 'wordle-status win'; }
+  if (wState.won)      { el.textContent = '🎉 Geschafft! Super, Datzi!'; el.className = 'wordle-status win'; }
   else if (wState.finished) { el.textContent = '😅 Nicht geschafft — schau den Tipp an!'; el.className = 'wordle-status lose'; }
   else { el.textContent = ''; el.className = 'wordle-status'; }
 }
