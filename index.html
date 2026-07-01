@@ -1028,7 +1028,7 @@ function renderWordleKeyboard() {
 function renderWordleStatus() {
   const el = document.getElementById('wordle-status');
   if (wState.won)      { el.textContent = '🎉 Geschafft! Super Datzi!'; el.className = 'wordle-status win'; }
-  else if (wState.finished) { el.textContent = '😅 Das Wort war: ' + wState.word; el.className = 'wordle-status lose'; }
+  else if (wState.finished) { el.textContent = '😅 Nicht geschafft — schau den Tipp an!'; el.className = 'wordle-status lose'; }
   else { el.textContent = ''; el.className = 'wordle-status'; }
 }
 
@@ -1065,6 +1065,11 @@ function showWordleHint() {
   if (hintBox.textContent) hintBox.style.display = 'block';
 }
 
+function randomWinBtn() {
+  const opts = ['Wow, bin ich gut 🫣','Ich bin eine Rätselmaus 🥰','Heute lasse ich es mir gut gehen 😌','Ich vermisse meinen Davebär 🥲','Koooookaaaaaa 🐣'];
+  return opts[Math.floor(Math.random() * opts.length)];
+}
+
 function submitWordle() {
   if (wState.currentGuess.length < wState.length) { shakeRow(wState.guesses.length); return; }
   wState.guesses.push(wState.currentGuess);
@@ -1076,12 +1081,11 @@ function submitWordle() {
     progress[wState.id] = { solved: true, won: true, guesses: wState.guesses }; saveProgress();
     renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
     showWordleHint();
-    setTimeout(() => showPopup('🎉', wState.word + '!', wState.successMessage, 'Ich bin eine Rätselmaus 🥰', showWordleCountdown), 600);
+    setTimeout(() => showPopup('🎉', wState.word + '!', wState.successMessage, randomWinBtn(), showWordleCountdown), 600);
   } else if (finished) {
     renderWordleGrid(); renderWordleKeyboard(); renderWordleStatus();
-    const lostWord = wState.word;
     setTimeout(() => {
-      showPopup('😅', 'Das Wort war: ' + lostWord, 'Kein Problem! Schau dir den Tipp an und versuch\'s nochmal 💪');
+      showPopup('😅', 'Nicht geschafft!', 'Kein Problem! Schau dir den Tipp an und versuch\'s nochmal 💪');
       // Fortschritt löschen und Grid zurücksetzen
       delete progress[wState.id]; saveProgress();
       wState.guesses = []; wState.finished = false; wState.won = false; wState.currentGuess = '';
@@ -1230,6 +1234,7 @@ function getCwTd(r, c) { return document.querySelector(`.cw-cell[data-r="${r}"][
 function getCwInput(r, c) { const td = getCwTd(r,c); return td ? td.querySelector('input') : null; }
 
 function handleCwInput(e, r, c) {
+  if (isCellInSolvedWord(r, c)) { e.target.value = cwUserGrid[r][c] || ''; return; }
   const raw = e.target.value.toUpperCase().replace(/[^A-Z]/g,'').slice(-1);
   e.target.value = raw; cwUserGrid[r][c] = raw; saveCwProgress();
   if (raw) {
@@ -1240,6 +1245,7 @@ function handleCwInput(e, r, c) {
 
 function handleCwKeydown(e, r, c) {
   if (e.key === 'Backspace') {
+    if (isCellInSolvedWord(r, c)) { e.preventDefault(); return; }
     if (cwUserGrid[r][c]) { cwUserGrid[r][c] = ''; const inp = getCwInput(r,c); if(inp) inp.value=''; saveCwProgress(); }
     else movePrev(r, c);
     e.preventDefault();
