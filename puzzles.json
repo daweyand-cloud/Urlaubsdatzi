@@ -499,156 +499,57 @@
     },
     {
       "id": "c001",
-      "title": "Kreuzworträtsel #1",
+      "title": "Wir zwei ❤️",
       "date": "2026-07-20",
       "unlockHour": 8,
       "grid": [
-        [
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#"
-        ],
-        [
-          "#",
-          "R",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "B"
-        ],
-        [
-          "#",
-          "E",
-          "#",
-          "#",
-          "I",
-          "N",
-          "S",
-          "E",
-          "L"
-        ],
-        [
-          "#",
-          "I",
-          "#",
-          "#",
-          "#",
-          "#",
-          "T",
-          "#",
-          "A"
-        ],
-        [
-          "#",
-          "S",
-          "O",
-          "M",
-          "M",
-          "E",
-          "R",
-          "#",
-          "U"
-        ],
-        [
-          "#",
-          "E",
-          "#",
-          "#",
-          "E",
-          "#",
-          "A",
-          "#",
-          "#"
-        ],
-        [
-          "#",
-          "#",
-          "#",
-          "#",
-          "E",
-          "#",
-          "N",
-          "#",
-          "#"
-        ],
-        [
-          "#",
-          "#",
-          "#",
-          "#",
-          "R",
-          "#",
-          "D",
-          "#",
-          "#"
-        ],
-        [
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#",
-          "#"
-        ]
+        ["#","#","#","#","K","#","#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","L","#","#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","O","#","#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","S","#","#","#","#","#","#","#","#","#","#"],
+        ["#","#","#","#","P","#","#","H","O","C","H","Z","E","I","T"],
+        ["#","#","#","#","U","#","#","#","#","#","A","#","#","#","#"],
+        ["#","#","#","#","E","#","#","#","#","#","N","#","#","#","#"],
+        ["#","#","#","#","L","#","#","#","#","#","N","#","#","#","#"],
+        ["#","S","#","#","U","#","#","#","#","D","A","R","T","S","#"],
+        ["P","I","C","K","N","I","C","K","#","#","H","#","I","#","#"],
+        ["#","Z","#","#","G","#","Y","#","#","#","#","#","R","#","D"],
+        ["#","I","#","#","#","#","C","A","R","B","O","N","A","R","A"],
+        ["#","L","#","#","#","#","L","#","#","#","#","#","M","#","T"],
+        ["#","I","#","#","S","P","I","E","G","E","L","E","I","#","Z"],
+        ["#","E","#","#","P","#","N","#","#","#","I","#","S","#","I"],
+        ["#","N","#","#","A","#","G","#","#","#","S","#","U","#","#"],
+        ["#","#","#","#","Z","#","#","#","#","#","S","#","#","#","#"],
+        ["S","C","H","W","I","T","Z","E","N","#","A","#","#","#","#"],
+        ["#","#","#","#","E","#","#","#","#","#","B","E","T","T","#"],
+        ["R","O","E","H","R","E","#","#","#","#","O","#","#","#","#"],
+        ["#","#","#","#","G","#","#","#","#","#","N","#","#","#","#"],
+        ["#","#","#","F","A","H","R","R","A","D","#","#","#","#","#"],
+        ["#","#","#","#","N","#","#","#","#","#","#","#","#","#","#"],
+        ["#","#","Y","O","G","A","#","#","#","#","#","#","#","#","#"]
       ],
       "clues": {
         "across": [
-          {
-            "number": 3,
-            "row": 2,
-            "col": 4,
-            "answer": "INSEL",
-            "clue": "Wo Datzi Urlaub macht 🏝️"
-          },
-          {
-            "number": 5,
-            "row": 4,
-            "col": 1,
-            "answer": "SOMMER",
-            "clue": "Die schönste Jahreszeit ☀️"
-          }
+          {"number": 18, "row": 4,  "col": 7,  "answer": "HOCHZEIT",  "clue": "Steht direkt nach unserem Wiedersehen an 💍"},
+          {"number": 13, "row": 8,  "col": 9,  "answer": "DARTS",     "clue": "Jährliches Event im Winter 🎯"},
+          {"number": 16, "row": 9,  "col": 0,  "answer": "PICKNICK",  "clue": "Immer mit Korb 🧺"},
+          {"number": 8,  "row": 11, "col": 6,  "answer": "CARBONARA", "clue": "Kochen wir gerne 🍝"},
+          {"number": 4,  "row": 13, "col": 4,  "answer": "SPIEGELEI", "clue": "Kannst du perfekt 🍳"},
+          {"number": 2,  "row": 17, "col": 0,  "answer": "SCHWITZEN", "clue": "Passiert uns im Sommer oft 🥵"},
+          {"number": 11, "row": 18, "col": 10, "answer": "BETT",      "clue": "Da sind wir gerne 🛏️"},
+          {"number": 9,  "row": 19, "col": 0,  "answer": "ROEHRE",    "clue": "Verwegenes Hotel 🚂"},
+          {"number": 5,  "row": 21, "col": 3,  "answer": "FAHRRAD",   "clue": "Verkehrsmittel 🚴"},
+          {"number": 6,  "row": 23, "col": 2,  "answer": "YOGA",      "clue": "Entspannt uns 🧘"}
         ],
         "down": [
-          {
-            "number": 1,
-            "row": 1,
-            "col": 1,
-            "answer": "REISE",
-            "clue": "Was Datzi gerade macht ✈️"
-          },
-          {
-            "number": 2,
-            "row": 1,
-            "col": 8,
-            "answer": "BLAU",
-            "clue": "Die Farbe des Meeres und des Himmels"
-          },
-          {
-            "number": 4,
-            "row": 2,
-            "col": 6,
-            "answer": "STRAND",
-            "clue": "Sand, Sonne, Meer — der perfekte Ort"
-          },
-          {
-            "number": 6,
-            "row": 4,
-            "col": 4,
-            "answer": "MEER",
-            "clue": "Das Salzwasser, das Elba umgibt"
-          }
+          {"number": 14, "row": 0,  "col": 4,  "answer": "KLOSPUELUNG", "clue": "Wird selten repariert 🚽"},
+          {"number": 10, "row": 4,  "col": 10, "answer": "HANNAH",      "clue": "Stört im Bett 🐱"},
+          {"number": 1,  "row": 8,  "col": 1,  "answer": "SIZILIEN",    "clue": "Nächstes Urlaubsziel 🌋"},
+          {"number": 3,  "row": 8,  "col": 12, "answer": "TIRAMISU",    "clue": "Erster gemeinsamer Snack 🍰"},
+          {"number": 15, "row": 9,  "col": 6,  "answer": "CYCLING",     "clue": "War David einmal dabei 🚵"},
+          {"number": 17, "row": 10, "col": 14, "answer": "DATZI",       "clue": "Ist super süß 🥰"},
+          {"number": 12, "row": 13, "col": 4,  "answer": "SPAZIERGANG", "clue": "Oft sonntags 🌳"},
+          {"number": 7,  "row": 13, "col": 10, "answer": "LISSABON",    "clue": "Erster Urlaub 🌊"}
         ]
       }
     },

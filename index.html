@@ -1158,7 +1158,9 @@ function applyCwZoom() {
 function renderCrosswordGrid() {
   const table = document.getElementById('cw-grid-table');
   table.innerHTML = '';
-  cwZoomLevel = 1; // reset to Normal when opening a new puzzle
+  // auto-select zoom so the grid fits on screen (15 cols need Klein)
+  const numCols = cwData.grid[0].length;
+  cwZoomLevel = numCols > 12 ? 0 : 1;
   const numMap = buildNumberMap();
   cwData.grid.forEach((row, r) => {
     const tr = document.createElement('tr');
