@@ -564,7 +564,15 @@
     <span id="quote-text"></span>
   </div>
 
-  <div class="home-tiles">
+  <!-- Wiedersehenstag 07.08. -->
+  <div id="wiedersehen-box" style="display:none; text-align:center; padding: 32px 16px 40px;">
+    <div style="font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 28px;">
+      Heute sehen wir uns endlich wieder 🥰
+    </div>
+    <img src="images/wiedersehen.gif" alt="" style="max-width: 220px; border-radius: 16px;">
+  </div>
+
+  <div id="home-tiles-wrap" class="home-tiles">
     <div class="home-tile tile-wordle" onclick="showWordleList()">
       <div class="tile-icon">🔤</div>
       <div class="tile-body">
@@ -695,7 +703,14 @@ async function init() {
     console.warn('puzzles.json nicht geladen:', e);
   }
   renderDailyQuote();
-  updateHomeBadges();
+  // Wiedersehenstag: nur Spruch + GIF, keine Spielkacheln
+  const today = new Date().toISOString().slice(0, 10);
+  if (today === '2026-08-07') {
+    document.getElementById('home-tiles-wrap').style.display = 'none';
+    document.getElementById('wiedersehen-box').style.display  = 'block';
+  } else {
+    updateHomeBadges();
+  }
 }
 
 function saveProgress() {
