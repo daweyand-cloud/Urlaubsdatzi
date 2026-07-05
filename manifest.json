@@ -1,6 +1,6 @@
 {
-  "name": "Datzi's Rätselspaß",
-  "short_name": "Datzi's Rätselspaß",
+  "name": "Rätselspaß",
+  "short_name": "Rätselspaß",
   "description": "Kreuzworträtsel, Wordle und Überraschungen von David für Datzi",
   "start_url": "./index.html",
   "display": "standalone",
