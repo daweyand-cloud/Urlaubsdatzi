@@ -23,7 +23,7 @@
     {
       "date": "2026-07-20",
       "tag": "🏝️ Elba",
-      "text": "Du bist jetzt auf dem Weg nach Elba. Ich bin gerade noch auf dem Weg nach Hause von Parookaville. Komisch, dass ich nicht zu dir komme."
+      "text": "Heute nimmst du die Fähre — Elba liegt schon in Sichtweite. Gute Überfahrt, mein Herz ❤️🛥️"
     },
     {
       "date": "2026-07-21",
@@ -129,7 +129,7 @@
       "word": "SONNE",
       "length": 5,
       "maxAttempts": 6,
-      "hint": "Scheint auf Elba besonders schön ☀️",
+      "hint": "Wärmt einen überall — egal wo man gerade ist ☀️",
       "successMessage": "Die Sonne scheint — so wie du strahlst, wenn du lachst 🌞"
     },
     {
@@ -150,7 +150,7 @@
       "length": 6,
       "maxAttempts": 6,
       "hint": "Sand, Meer, Liegestuhl",
-      "successMessage": "Sand zwischen den Zehen, Meer in Sichtweite — klingt nach deiner aktuellen Situation 🏖️"
+      "successMessage": "In zwei Tagen bist du dort 🏖️"
     },
     {
       "id": "w004",
@@ -170,7 +170,7 @@
       "length": 5,
       "maxAttempts": 6,
       "hint": "Was du gerade machst — das große Abenteuer",
-      "successMessage": "Jede Reise endet irgendwann. Diese hier am 7. August — und dann gibt es das Wiedersehen 🛫"
+      "successMessage": "Jede Reise endet irgendwann. Diese hier am 7. August — und dann gibt es das Wiedersehen 🛥️"
     },
     {
       "id": "w006",
